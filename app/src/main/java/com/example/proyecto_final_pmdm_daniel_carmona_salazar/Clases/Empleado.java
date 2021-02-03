@@ -23,6 +23,13 @@ public class Empleado {
         this.telefonoEmpleado = telefonoEmpleado;
     }
 
+    public Empleado(String nombreEmpleado, String apellidosEmpleado, String domicilioEmpleado, String telefonoEmpleado) {
+        this.nombreEmpleado = nombreEmpleado;
+        this.apellidosEmpleado = apellidosEmpleado;
+        this.domicilioEmpleado = domicilioEmpleado;
+        this.telefonoEmpleado = telefonoEmpleado;
+    }
+
     public Empleado() {
         this.idEmpleado = 0;
         this.nombreEmpleado = "";

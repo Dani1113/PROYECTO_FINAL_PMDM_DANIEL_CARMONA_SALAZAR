@@ -1,5 +1,6 @@
 package com.example.proyecto_final_pmdm_daniel_carmona_salazar.Clases;
 
+import android.graphics.Bitmap;
 import android.os.Build;
 
 import androidx.annotation.RequiresApi;
@@ -12,11 +13,18 @@ public class Videojuego {
     private String títuloVideojuego;
     private int pegiVideojuego;
     private String géneroVideojuego;
-    private String logoVideojuego;
+    private Bitmap logoVideojuego;
 
     //CONSTRUCTOR
-    public Videojuego(int idVideojuego, String títuloVideojuego, int pegiVideojuego, String géneroVideojuego, String logoVideojuego) {
+    public Videojuego(int idVideojuego, String títuloVideojuego, int pegiVideojuego, String géneroVideojuego, Bitmap logoVideojuego) {
         this.idVideojuego = idVideojuego;
+        this.títuloVideojuego = títuloVideojuego;
+        this.pegiVideojuego = pegiVideojuego;
+        this.géneroVideojuego = géneroVideojuego;
+        this.logoVideojuego = logoVideojuego;
+    }
+
+    public Videojuego(String títuloVideojuego, int pegiVideojuego, String géneroVideojuego, Bitmap logoVideojuego) {
         this.títuloVideojuego = títuloVideojuego;
         this.pegiVideojuego = pegiVideojuego;
         this.géneroVideojuego = géneroVideojuego;
@@ -28,7 +36,7 @@ public class Videojuego {
         this.títuloVideojuego = "";
         this.pegiVideojuego = 0;
         this.géneroVideojuego = "";
-        this.logoVideojuego = "";
+        this.logoVideojuego = null;
     }
 
     //GETTTERS & SETTERS
@@ -64,11 +72,11 @@ public class Videojuego {
         this.géneroVideojuego = géneroVideojuego;
     }
 
-    public String getLogoVideojuego() {
+    public Bitmap getLogoVideojuego() {
         return logoVideojuego;
     }
 
-    public void setLogoVideojuego(String logoVideojuego) {
+    public void setLogoVideojuego(Bitmap logoVideojuego) {
         this.logoVideojuego = logoVideojuego;
     }
 
@@ -90,6 +98,6 @@ public class Videojuego {
     //TO STRING
     @Override
     public String toString() {
-        return "Videojuego{" + "idVideojuego=" + idVideojuego + ", títuloVideojuego='" + títuloVideojuego + '\'' + ", pegiVideojuego=" + pegiVideojuego + ", géneroVideojuego='" + géneroVideojuego + '\'' + ", logoVideojuego='" + logoVideojuego + '\'' + '}';
+        return "Videojuego{" + "idVideojuego=" + idVideojuego + ", títuloVideojuego='" + títuloVideojuego + '\'' + ", pegiVideojuego=" + pegiVideojuego + ", géneroVideojuego=" + géneroVideojuego + "}";
     }
 }
