@@ -1,11 +1,13 @@
 package com.example.proyecto_final_pmdm_daniel_carmona_salazar.Modelos;
 
+import android.graphics.Bitmap;
 import android.util.Log;
 
 import com.example.proyecto_final_pmdm_daniel_carmona_salazar.Clases.Empleado;
 import com.example.proyecto_final_pmdm_daniel_carmona_salazar.Clases.Venta;
 import com.example.proyecto_final_pmdm_daniel_carmona_salazar.Clases.Videojuego;
 
+import java.io.ByteArrayInputStream;
 import java.sql.Blob;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -16,6 +18,7 @@ import java.util.ArrayList;
 
 import static com.example.proyecto_final_pmdm_daniel_carmona_salazar.Modelos.VideojuegoDB.blobABytes;
 import static com.example.proyecto_final_pmdm_daniel_carmona_salazar.Modelos.VideojuegoDB.bytesABitmap;
+import static com.example.proyecto_final_pmdm_daniel_carmona_salazar.Modelos.VideojuegoDB.convertBitmapToByteArrayUncompressed;
 
 public class VentaDB {
 
@@ -83,8 +86,9 @@ public class VentaDB {
             sentenciaPreparada2.setString(1, v.getVideojuego().getTítuloVideojuego());
             sentenciaPreparada2.setInt(2, v.getVideojuego().getPegiVideojuego());
             sentenciaPreparada2.setString(3, v.getVideojuego().getGéneroVideojuego());
-
-            sentenciaPreparada2.setBlob(4, v.getVideojuego().getLogoVideojuego()));
+            Bitmap logoBlob = v.getVideojuego().getLogoVideojuego();
+            byte[] logoArray = convertBitmapToByteArrayUncompressed(logoBlob);
+            sentenciaPreparada2.setBinaryStream(4, new ByteArrayInputStream(logoArray), logoArray.length);
             int filasAfectadas2 = sentenciaPreparada2.executeUpdate();
             sentenciaPreparada2.close();
 

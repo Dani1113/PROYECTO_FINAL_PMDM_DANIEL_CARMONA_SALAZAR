@@ -6,6 +6,7 @@ import android.util.Log;
 
 import com.example.proyecto_final_pmdm_daniel_carmona_salazar.Clases.Videojuego;
 
+import java.nio.ByteBuffer;
 import java.sql.Blob;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -29,7 +30,14 @@ public class VideojuegoDB {
         return blobAsBytes;
     }
 
-    //----------------------------------------------------------------------------
+    //Método que convierte de Bitmap a Bytes[]
+    public static byte[] convertBitmapToByteArrayUncompressed(Bitmap bitmap){
+        ByteBuffer byteBuffer = ByteBuffer.allocate(bitmap.getByteCount());
+        bitmap.copyPixelsToBuffer(byteBuffer);
+        byteBuffer.rewind();
+        return byteBuffer.array();
+    }
+
     //Método que convierte de Bytes[] a Bitmap
     public static Bitmap bytesABitmap(byte[] b){
         Bitmap.Config config = Bitmap.Config.ARGB_8888;
