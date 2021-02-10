@@ -16,9 +16,9 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import static com.example.proyecto_final_pmdm_daniel_carmona_salazar.Modelos.VideojuegoDB.blobABytes;
-import static com.example.proyecto_final_pmdm_daniel_carmona_salazar.Modelos.VideojuegoDB.bytesABitmap;
-import static com.example.proyecto_final_pmdm_daniel_carmona_salazar.Modelos.VideojuegoDB.convertBitmapToByteArrayUncompressed;
+import static com.example.proyecto_final_pmdm_daniel_carmona_salazar.Utilidades.Utilidades.blobABytes;
+import static com.example.proyecto_final_pmdm_daniel_carmona_salazar.Utilidades.Utilidades.bytesABitmap;
+import static com.example.proyecto_final_pmdm_daniel_carmona_salazar.Utilidades.Utilidades.bitmapAByte;
 
 public class VentaDB {
 
@@ -67,6 +67,7 @@ public class VentaDB {
     public static boolean insertarVenta(Venta v){
         Connection conexión = BaseDB.conectarConBaseDeDatos();
         if(conexión == null) {
+            Log.i("SQL", "Error al establecer la conexión con la base de datos");
             return false;
         }
         try {
@@ -77,7 +78,7 @@ public class VentaDB {
             sentenciaPreparada1.setString(2, v.getEmpleado().getApellidosEmpleado());
             sentenciaPreparada1.setString(3, v.getEmpleado().getDomicilioEmpleado());
             sentenciaPreparada1.setString(4, v.getEmpleado().getTelefonoEmpleado());
-            int filasAfectadas = sentenciaPreparada1.executeUpdate();
+            int filasAfectadas1 = sentenciaPreparada1.executeUpdate();
             sentenciaPreparada1.close();
 
             //Inserto el videojuego
@@ -87,12 +88,12 @@ public class VentaDB {
             sentenciaPreparada2.setInt(2, v.getVideojuego().getPegiVideojuego());
             sentenciaPreparada2.setString(3, v.getVideojuego().getGéneroVideojuego());
             Bitmap logoBlob = v.getVideojuego().getLogoVideojuego();
-            byte[] logoArray = convertBitmapToByteArrayUncompressed(logoBlob);
+            byte[] logoArray = bitmapAByte(logoBlob);
             sentenciaPreparada2.setBinaryStream(4, new ByteArrayInputStream(logoArray), logoArray.length);
             int filasAfectadas2 = sentenciaPreparada2.executeUpdate();
             sentenciaPreparada2.close();
 
-            //Insero la venta
+            //Inserto la venta
             String ordenSQL3 = "INSERT INTO venta (numero_venta, EMPLEADO_id_empleado, VIDEOJUEGO_id_videojuego) VALUES (?, ?, ?);";
             PreparedStatement sentenciaPreparada3 = conexión.prepareStatement(ordenSQL3);
             sentenciaPreparada3.setInt(1, v.getNúmeroVenta());
@@ -101,21 +102,91 @@ public class VentaDB {
             int filasAfectadas3 = sentenciaPreparada3.executeUpdate();
             sentenciaPreparada3.close();
             conexión.close();
-            if(filasAfectadas > 0 && filasAfectadas2 > 0 && filasAfectadas3 > 0) {
+            if(filasAfectadas1 > 0 && filasAfectadas2 > 0 && filasAfectadas3 > 0) {
                 return true;
             }else {
                 return false;
             }
         } catch (SQLException e) {
+            Log.i("SQL", "Error al insertar en la base de datos");
             return false;
         }
     }
 
-    public static boolean borrarVenta(Venta v){
-        return false;
+    public static boolean borrarVenta(Venta v) {
+        Connection conexión = BaseDB.conectarConBaseDeDatos();
+        if(conexión == null) {
+            Log.i("SQL", "Error al establecer la conexión con la base de datos");
+            return false;
+        }
+        try {
+            String ordenSQL = "DELETE FROM venta WHERE numero_venta LIKE ?;";
+            PreparedStatement sentenciaPreparada = conexión.prepareStatement(ordenSQL);
+            sentenciaPreparada.setInt(1, v.getNúmeroVenta());
+            int filasAfectadas1 = sentenciaPreparada.executeUpdate();
+            sentenciaPreparada.close();
+            conexión.close();
+            if(filasAfectadas1 > 0) {
+                return true;
+            }else {
+                return false;
+            }
+        } catch (SQLException e) {
+            Log.i("SQL", "Error al borrar en la base de datos");
+            return false;
+        }
     }
 
-    public static boolean actualizarVenta(Venta v){
-        return false;
+    public static boolean actualizarVenta(Venta v) {
+        Connection conexión = BaseDB.conectarConBaseDeDatos();
+        if(conexión == null) {
+            Log.i("SQL", "Error al establecer la conexión con la base de datos");
+            return false;
+        }
+        try {
+            //Actualizo el empleado
+            String ordenSQL = "UPDATE empleado SET nombre_empleado = ?, apellidos_empleados = ?, domicilio_empleado = ?, telefono_empleado = ? WHERE id_empleado = ?";
+            PreparedStatement sentenciaPreparada = conexión.prepareStatement(ordenSQL);
+            sentenciaPreparada.setString(1, v.getEmpleado().getNombreEmpleado());
+            sentenciaPreparada.setString(2, v.getEmpleado().getApellidosEmpleado());
+            sentenciaPreparada.setString(3, v.getEmpleado().getDomicilioEmpleado());
+            sentenciaPreparada.setString(4, v.getEmpleado().getTelefonoEmpleado());
+            sentenciaPreparada.setInt(5, v.getEmpleado().getIdEmpleado());
+            int filasAfectadas1 = sentenciaPreparada.executeUpdate();
+            sentenciaPreparada.close();
+
+            //Actualizo el videojuego
+            String ordenSQL2 = "UPDATE videojuego SET título_videojuego = ?, pegi_videojuego = ?, genero_videojuego = ?, logo_videojuego = ? WHERE id_videojuego  = ?";
+            PreparedStatement sentenciaPreparada2 = conexión.prepareStatement(ordenSQL2);
+            sentenciaPreparada2.setString(1, v.getVideojuego().getTítuloVideojuego());
+            sentenciaPreparada2.setInt(2, v.getVideojuego().getPegiVideojuego());
+            sentenciaPreparada2.setString(3, v.getVideojuego().getGéneroVideojuego());
+            Bitmap logoBlob = v.getVideojuego().getLogoVideojuego();
+            byte[] logoArray = bitmapAByte(logoBlob);
+            sentenciaPreparada2.setBinaryStream(4, new ByteArrayInputStream(logoArray), logoArray.length);
+            sentenciaPreparada2.setInt(5, v.getVideojuego().getIdVideojuego());
+            int filasAfectadas2 = sentenciaPreparada2.executeUpdate();
+            sentenciaPreparada2.close();
+
+            //Actualizo la venta
+            String ordenSQL3 = "UPDATE venta SET numero_venta = ?, EMPLEADO_id_empleado = ?, VIDEOJUEGO_id_videojuego = ? WHERE id_venta = ?";
+            PreparedStatement sentenciaPreparada3 = conexión.prepareStatement(ordenSQL3);
+            sentenciaPreparada3.setInt(1, v.getNúmeroVenta());
+            sentenciaPreparada3.setInt(2, v.getEmpleado().getIdEmpleado());
+            sentenciaPreparada3.setInt(3, v.getVideojuego().getIdVideojuego());
+            sentenciaPreparada3.setInt(4, v.getIdVenta());
+            int filasAfectadas3 = sentenciaPreparada3.executeUpdate();
+            sentenciaPreparada3.close();
+
+            conexión.close();
+            if(filasAfectadas1 > 0 && filasAfectadas2 > 0 && filasAfectadas3 > 0) {
+                return true;
+            }else {
+                return false;
+            }
+        } catch (SQLException e) {
+            Log.i("SQL", "Error al actualizar en la base de datos");
+            return false;
+        }
     }
 }

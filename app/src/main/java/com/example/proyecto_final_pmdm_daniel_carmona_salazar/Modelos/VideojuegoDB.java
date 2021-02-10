@@ -1,12 +1,9 @@
 package com.example.proyecto_final_pmdm_daniel_carmona_salazar.Modelos;
 
-import android.graphics.Bitmap;
-import android.graphics.BitmapFactory;
 import android.util.Log;
 
 import com.example.proyecto_final_pmdm_daniel_carmona_salazar.Clases.Videojuego;
 
-import java.nio.ByteBuffer;
 import java.sql.Blob;
 import java.sql.Connection;
 import java.sql.ResultSet;
@@ -14,46 +11,14 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
+import static com.example.proyecto_final_pmdm_daniel_carmona_salazar.Utilidades.Utilidades.blobABytes;
+import static com.example.proyecto_final_pmdm_daniel_carmona_salazar.Utilidades.Utilidades.bytesABitmap;
+
 public class VideojuegoDB {
-
-    //----------------------------------------------------------------------------
-    //Método que convierte de Blob a Byte[]
-    public static byte[] blobABytes(Blob b){
-        int blobLength = 0;
-        byte[] blobAsBytes = new byte[0];
-        try {
-            blobLength = (int) b.length();
-            blobAsBytes = b.getBytes(1, blobLength);
-        } catch (SQLException throwables) {
-            throwables.printStackTrace();
-        }
-        return blobAsBytes;
-    }
-
-    //Método que convierte de Bitmap a Bytes[]
-    public static byte[] convertBitmapToByteArrayUncompressed(Bitmap bitmap){
-        ByteBuffer byteBuffer = ByteBuffer.allocate(bitmap.getByteCount());
-        bitmap.copyPixelsToBuffer(byteBuffer);
-        byteBuffer.rewind();
-        return byteBuffer.array();
-    }
-
-    //Método que convierte de Bytes[] a Bitmap
-    public static Bitmap bytesABitmap(byte[] b){
-        Bitmap.Config config = Bitmap.Config.ARGB_8888;
-        Bitmap bitmap = Bitmap.createBitmap(200, 200,config);
-        try{
-            bitmap = BitmapFactory.decodeByteArray(b, 0, b.length);
-        } catch (Exception e){
-        }
-        return bitmap;
-    }
-    //------------------------------------------------------------------------------
-
     public static ArrayList<Videojuego> obtenerVideojuego(){
         Connection conexión = BaseDB.conectarConBaseDeDatos();
         if(conexión == null) {
-            Log.i("SQL", "Error al establecer la conexión con la base de datos");
+            Log.i("SQL", "Error al establecer la conexión con la base de datos 'videojuego'");
             return null;
         }
         ArrayList<Videojuego> videojuegosDevueltos = new ArrayList<Videojuego>();
@@ -74,6 +39,35 @@ public class VideojuegoDB {
             sentencia.close();
             conexión.close();
             return videojuegosDevueltos;
+        } catch (SQLException e) {
+            Log.i("SQL", "Error al mostrar los videojuegos de la base de datos");
+            return null;
+        }
+    }
+
+    public static Videojuego buscarVideojuego(String nombreV) {
+        Connection conexión = BaseDB.conectarConBaseDeDatos();
+        if (conexión == null) {
+            Log.i("SQL", "Error al establecer la conexión con la base de datos 'videojuego'");
+            return null;
+        }
+        Videojuego videojuegoEncontrado = null;
+        try {
+            ResultSet resultadoSQL = BaseDB.buscarFilas(conexión, "videojuego", "título_videojuego", nombreV);
+            if (resultadoSQL == null) {
+                return null;
+            }
+            while (resultadoSQL.next()) {
+                int idVideojuego = resultadoSQL.getInt("id_videojuego");
+                String títuloVideojuego = resultadoSQL.getString("título_videojuego");
+                int pegiVideojuego = resultadoSQL.getInt("pegi_videojuego");
+                String géneroVideojuego = resultadoSQL.getString("genero_videojuego");
+                Blob logoVideojuego = resultadoSQL.getBlob("logo_videojuego");
+                videojuegoEncontrado = new Videojuego(idVideojuego, títuloVideojuego, pegiVideojuego, géneroVideojuego, bytesABitmap(blobABytes(logoVideojuego)));
+            }
+            resultadoSQL.close();
+            conexión.close();
+            return videojuegoEncontrado;
         } catch (SQLException e) {
             Log.i("SQL", "Error al mostrar los videojuegos de la base de datos");
             return null;

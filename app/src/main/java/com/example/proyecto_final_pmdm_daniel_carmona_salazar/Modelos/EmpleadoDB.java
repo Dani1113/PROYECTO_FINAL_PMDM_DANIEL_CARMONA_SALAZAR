@@ -11,11 +11,10 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 public class EmpleadoDB {
-
     public static ArrayList<Empleado> obtenerEmpleado(){
         Connection conexión = BaseDB.conectarConBaseDeDatos();
         if(conexión == null) {
-            Log.i("SQL", "Error al establecer la conexión con la base de datos");
+            Log.i("SQL", "Error al establecer la conexión con la base de datos 'empleado'");
             return null;
         }
         ArrayList<Empleado> empleadosDevueltos = new ArrayList<Empleado>();
@@ -36,6 +35,35 @@ public class EmpleadoDB {
             sentencia.close();
             conexión.close();
             return empleadosDevueltos;
+        } catch (SQLException e) {
+            Log.i("SQL", "Error al mostrar los empleados de la base de datos");
+            return null;
+        }
+    }
+
+    public static Empleado buscarEmpleado(String nombreE) {
+        Connection conexión = BaseDB.conectarConBaseDeDatos();
+        if (conexión == null) {
+            Log.i("SQL", "Error al establecer la conexión con la base de datos 'empleado'");
+            return null;
+        }
+        Empleado empleadoEncontrado = null;
+        try {
+            ResultSet resultadoSQL = BaseDB.buscarFilas(conexión, "empleado", "nombre_empleado", nombreE);
+            if (resultadoSQL == null) {
+                return null;
+            }
+            while (resultadoSQL.next()) {
+                int idEmpleado = resultadoSQL.getInt("id_empleado");
+                String nombreEmpleado = resultadoSQL.getString("nombre_empleado");
+                String apellidosEmpleado = resultadoSQL.getString("apellidos_empleado");
+                String domicilioEmpleado = resultadoSQL.getString("domicilio_empleado");
+                String telefonoEmpleado = resultadoSQL.getString("telefono_empleado");
+                empleadoEncontrado = new Empleado(idEmpleado, nombreEmpleado, apellidosEmpleado, domicilioEmpleado, telefonoEmpleado);
+            }
+            resultadoSQL.close();
+            conexión.close();
+            return empleadoEncontrado;
         } catch (SQLException e) {
             Log.i("SQL", "Error al mostrar los empleados de la base de datos");
             return null;
