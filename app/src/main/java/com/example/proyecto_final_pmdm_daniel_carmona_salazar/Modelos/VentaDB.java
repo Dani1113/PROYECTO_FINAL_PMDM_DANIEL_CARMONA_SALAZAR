@@ -16,8 +16,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import static com.example.proyecto_final_pmdm_daniel_carmona_salazar.Utilidades.Utilidades.blobABytes;
-import static com.example.proyecto_final_pmdm_daniel_carmona_salazar.Utilidades.Utilidades.bytesABitmap;
+import static com.example.proyecto_final_pmdm_daniel_carmona_salazar.Utilidades.Utilidades.blobABitmap;
 import static com.example.proyecto_final_pmdm_daniel_carmona_salazar.Utilidades.Utilidades.bitmapAByte;
 
 public class VentaDB {
@@ -46,7 +45,7 @@ public class VentaDB {
                 int pegiVideojuego = resultado.getInt("pegi_videojuego");
                 String géneroVideojuego = resultado.getString("genero_videojuego");
                 Blob logoVideojuego = resultado.getBlob("logo_videojuego");
-                Videojuego v = new Videojuego(títuloVideojuego, pegiVideojuego, géneroVideojuego, bytesABitmap(blobABytes(logoVideojuego)));
+                Videojuego v = new Videojuego(títuloVideojuego, pegiVideojuego, géneroVideojuego, blobABitmap(logoVideojuego, ConfiguraciónImágenesDB.ANCHO_FOTO, ConfiguraciónImágenesDB.ALTO_FOTO));
 
                 //Recojo la venta
                 int idVenta = resultado.getInt("id_venta");

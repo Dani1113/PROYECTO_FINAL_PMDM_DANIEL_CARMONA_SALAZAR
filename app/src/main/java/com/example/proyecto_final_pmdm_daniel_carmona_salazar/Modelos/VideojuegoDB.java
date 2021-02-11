@@ -11,8 +11,7 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import static com.example.proyecto_final_pmdm_daniel_carmona_salazar.Utilidades.Utilidades.blobABytes;
-import static com.example.proyecto_final_pmdm_daniel_carmona_salazar.Utilidades.Utilidades.bytesABitmap;
+import static com.example.proyecto_final_pmdm_daniel_carmona_salazar.Utilidades.Utilidades.blobABitmap;
 
 public class VideojuegoDB {
     public static ArrayList<Videojuego> obtenerVideojuego(){
@@ -32,7 +31,7 @@ public class VideojuegoDB {
                 int pegiVideojuego = resultado.getInt("pegi_videojuego");
                 String géneroVideojuego = resultado.getString("genero_videojuego");
                 Blob logoVideojuego = resultado.getBlob("logo_videojuego");
-                Videojuego v = new Videojuego(idVideojuego, títuloVideojuego, pegiVideojuego, géneroVideojuego, bytesABitmap(blobABytes(logoVideojuego)));
+                Videojuego v = new Videojuego(idVideojuego, títuloVideojuego, pegiVideojuego, géneroVideojuego, blobABitmap(logoVideojuego, ConfiguraciónImágenesDB.ANCHO_FOTO, ConfiguraciónImágenesDB.ALTO_FOTO));
                 videojuegosDevueltos.add(v);
             }
             resultado.close();
@@ -63,7 +62,7 @@ public class VideojuegoDB {
                 int pegiVideojuego = resultadoSQL.getInt("pegi_videojuego");
                 String géneroVideojuego = resultadoSQL.getString("genero_videojuego");
                 Blob logoVideojuego = resultadoSQL.getBlob("logo_videojuego");
-                videojuegoEncontrado = new Videojuego(idVideojuego, títuloVideojuego, pegiVideojuego, géneroVideojuego, bytesABitmap(blobABytes(logoVideojuego)));
+                videojuegoEncontrado = new Videojuego(idVideojuego, títuloVideojuego, pegiVideojuego, géneroVideojuego, blobABitmap(logoVideojuego, ConfiguraciónImágenesDB.ANCHO_FOTO, ConfiguraciónImágenesDB.ALTO_FOTO));
             }
             resultadoSQL.close();
             conexión.close();
