@@ -6,4 +6,24 @@
     <string name="empezar">EMPEZAR</string>
     <string name="foto_inicio">foto_inicio</string>
     <string name="nombre">DANIEL CARMONA SALAZAR</string>
+    <string name="borrar_venta">BORRAR VENTA</string>
+    <string name="nueva_venta">NUEVA VENTA</string>
+    <string name="mostrar_informacion">MOSTRAR INFORMACIÓN</string>
+    <string name="actualizar_venta">ACTUALIZAR VENTA</string>
+    <string name="buscar_informacion">BUSCAR INFORMACIÓN</string>
+    <string name="pokeball">pokeball</string>
+    <string name="insertar_venta">INSERTAR VENTA</string>
+    <string name="videojuego">VIDEOJUEGO</string>
+    <string name="empleado">EMPLEADO</string>
+    <string name="venta">VENTA</string>
+    <string name="nombreE">Nombre:</string>
+    <string name="apellidos">Apellidos:</string>
+    <string name="domicilio">Domicilio:</string>
+    <string name="telefono">Teléfono:</string>
+    <string name="titulo">Título:</string>
+    <string name="genero">Género:</string>
+    <string name="pegi">PEGI:</string>
+    <string name="examinar">EXAMINAR</string>
+    <string name="numero_de_venta">Nº venta:</string>
+    <string name="crear_venta">CREAR VENTA</string>
 </resources>

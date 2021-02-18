@@ -21,6 +21,12 @@ public class Venta {
         this.videojuego = videojuego;
     }
 
+    public Venta(int númeroVenta, Empleado empleado, Videojuego videojuego) {
+        this.númeroVenta = númeroVenta;
+        this.empleado = empleado;
+        this.videojuego = videojuego;
+    }
+
     public Venta() {
         this.idVenta = 0;
         this.númeroVenta = 0;

@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/fondo"
+    tools:context=".MenuActivity">
+
+    <Button
+        android:id="@+id/btNuevaVenta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="@string/nueva_venta"
+        android:onClick="insertarVenta"
+        app:layout_constraintEnd_toEndOf="@+id/imageView2"
+        app:layout_constraintStart_toStartOf="@+id/imageView2"
+        app:layout_constraintTop_toBottomOf="@+id/imageView2" />
+
+    <Button
+        android:id="@+id/btBorrarVenta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="@string/borrar_venta"
+        android:onClick="borrarVenta"
+        app:layout_constraintEnd_toEndOf="@+id/btNuevaVenta"
+        app:layout_constraintStart_toStartOf="@+id/btNuevaVenta"
+        app:layout_constraintTop_toBottomOf="@+id/btNuevaVenta" />
+
+    <Button
+        android:id="@+id/btActualizarVenta"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="@string/actualizar_venta"
+        android:onClick="actualizarVenta"
+        app:layout_constraintEnd_toEndOf="@+id/btBorrarVenta"
+        app:layout_constraintStart_toStartOf="@+id/btBorrarVenta"
+        app:layout_constraintTop_toBottomOf="@+id/btBorrarVenta" />
+
+    <Button
+        android:id="@+id/btMostrarInformacion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="@string/mostrar_informacion"
+        android:onClick="mostrarInformación"
+        app:layout_constraintEnd_toEndOf="@+id/btActualizarVenta"
+        app:layout_constraintHorizontal_bias="0.513"
+        app:layout_constraintStart_toStartOf="@+id/btActualizarVenta"
+        app:layout_constraintTop_toBottomOf="@+id/btActualizarVenta" />
+
+    <Button
+        android:id="@+id/btBuscarInformacion"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="50dp"
+        android:text="@string/buscar_informacion"
+        android:onClick="buscarInformación"
+        app:layout_constraintEnd_toEndOf="@+id/btMostrarInformacion"
+        app:layout_constraintStart_toStartOf="@+id/btMostrarInformacion"
+        app:layout_constraintTop_toBottomOf="@+id/btMostrarInformacion" />
+
+    <ImageView
+        android:id="@+id/imageView2"
+        android:layout_width="175dp"
+        android:layout_height="175dp"
+        android:layout_marginTop="28dp"
+        android:contentDescription="@string/pokeball"
+        android:src="@drawable/pokeball"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+</androidx.constraintlayout.widget.ConstraintLayout>
