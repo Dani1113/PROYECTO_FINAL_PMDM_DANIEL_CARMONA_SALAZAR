@@ -16,8 +16,10 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import static com.example.proyecto_final_pmdm_daniel_carmona_salazar.Utilidades.Utilidades.blobABitmap;
+import javax.sql.rowset.serial.SerialBlob;
+
 import static com.example.proyecto_final_pmdm_daniel_carmona_salazar.Utilidades.Utilidades.bitmapAByte;
+import static com.example.proyecto_final_pmdm_daniel_carmona_salazar.Utilidades.Utilidades.blobABitmap;
 
 public class VentaDB {
 
@@ -64,8 +66,6 @@ public class VentaDB {
     }
 
     public static boolean insertarVenta(Venta v){
-        int id_videojuego = 0;
-        int id_empleado = 0;
         Connection conexión = BaseDB.conectarConBaseDeDatos();
         if(conexión == null) {
             Log.i("SQL", "Error al establecer la conexión con la base de datos");
@@ -87,7 +87,6 @@ public class VentaDB {
             PreparedStatement sentenciaPreparada2 = conexión.prepareStatement(ordenSQL2);
             sentenciaPreparada2.setString(1, v.getVideojuego().getTítuloVideojuego());
             sentenciaPreparada2.setInt(2, v.getVideojuego().getPegiVideojuego());
-            sentenciaPreparada2.setString(3, v.getVideojuego().getGéneroVideojuego());
             Bitmap logoBlob = v.getVideojuego().getLogoVideojuego();
             byte[] logoArray = bitmapAByte(logoBlob);
             sentenciaPreparada2.setBinaryStream(4, new ByteArrayInputStream(logoArray), logoArray.length);
@@ -95,37 +94,39 @@ public class VentaDB {
             sentenciaPreparada2.close();
 
             //Recojo el ID del empleado y del videojuego
-            String ordenSQL4 = "SELECT id_videojuego FROM videojuego v WHERE título_videojuego = ?;";
-            Statement sentencia = conexión.createStatement();
-            ResultSet resultado = sentencia.executeQuery(ordenSQL4);
+            String ordenSQL3 = "SELECT id_videojuego FROM videojuego v WHERE título_videojuego = ?;";
+            PreparedStatement sentenciaPreparada3 = conexión.prepareStatement(ordenSQL3);
+            sentenciaPreparada3.setString(1, v.getVideojuego().getTítuloVideojuego());
+            ResultSet resultado = sentenciaPreparada3.executeQuery();
+            int id_videojuego = 0;
             while(resultado.next()) {
                 id_videojuego = resultado.getInt("id_videojuego");
             }
-            Log.i("SQL", String.valueOf(id_videojuego));
-            System.out.println(id_videojuego);
             resultado.close();
-            sentencia.close();
+            sentenciaPreparada3.close();
 
-            String ordenSQL5 = "SELECT id_empleado FROM empleado e WHERE nombre_empleado = ?;";
-            Statement sentencia2 = conexión.createStatement();
-            ResultSet resultado2 = sentencia.executeQuery(ordenSQL5);
-            while(resultado.next()) {
-                id_empleado = resultado.getInt("id_empleado");
+            String ordenSQL4 = "SELECT id_empleado FROM empleado e WHERE nombre_empleado = ?;";
+            PreparedStatement sentenciaPreparada4 = conexión.prepareStatement(ordenSQL4);
+            sentenciaPreparada4.setString(1, v.getEmpleado().getNombreEmpleado());
+            ResultSet resultado2 = sentenciaPreparada4.executeQuery();
+            int id_empleado = 0;
+            while(resultado2.next()) {
+                id_empleado = resultado2.getInt("id_empleado");
             }
-            Log.i("SQL", String.valueOf(id_empleado));
-            System.out.println(id_empleado);
-            resultado.close();
-            sentencia.close();
+            resultado2.close();
+            sentenciaPreparada4.close();
 
             //Inserto la venta
-            String ordenSQL3 = "INSERT INTO venta (numero_venta, EMPLEADO_id_empleado, VIDEOJUEGO_id_videojuego) VALUES (?, ?, ?);";
-            PreparedStatement sentenciaPreparada3 = conexión.prepareStatement(ordenSQL3);
-            sentenciaPreparada3.setInt(1, v.getNúmeroVenta());
-            sentenciaPreparada3.setInt(2, id_empleado);
-            sentenciaPreparada3.setInt(3, id_videojuego);
-            int filasAfectadas3 = sentenciaPreparada3.executeUpdate();
-            sentenciaPreparada3.close();
+            String ordenSQL5 = "INSERT INTO venta (numero_venta, EMPLEADO_id_empleado, VIDEOJUEGO_id_videojuego) VALUES (?, ?, ?);";
+            PreparedStatement sentenciaPreparada5 = conexión.prepareStatement(ordenSQL5);
+            sentenciaPreparada5.setInt(1, v.getNúmeroVenta());
+            sentenciaPreparada5.setInt(2, id_empleado);
+            sentenciaPreparada5.setInt(3, id_videojuego);
+            int filasAfectadas3 = sentenciaPreparada5.executeUpdate();
+            sentenciaPreparada5.close();
+
             conexión.close();
+
             if(filasAfectadas1 > 0 && filasAfectadas2 > 0 && filasAfectadas3 > 0) {
                 return true;
             }else {
@@ -144,7 +145,7 @@ public class VentaDB {
             return false;
         }
         try {
-            String ordenSQL = "DELETE FROM venta WHERE numero_venta LIKE ?;";
+            String ordenSQL = "DELETE FROM venta WHERE numero_venta = ?;";
             PreparedStatement sentenciaPreparada = conexión.prepareStatement(ordenSQL);
             sentenciaPreparada.setInt(1, v.getNúmeroVenta());
             int filasAfectadas1 = sentenciaPreparada.executeUpdate();
