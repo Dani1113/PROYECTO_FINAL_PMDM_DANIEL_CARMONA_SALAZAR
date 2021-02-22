@@ -85,6 +85,6 @@ public class Venta {
     //TO STRING
     @Override
     public String toString() {
-        return "Venta{" + "idVenta=" + idVenta + ", numeroVenta=" + númeroVenta + ", empleado=" + empleado + ", videojuego=" + videojuego + '}';
+        return "Número de venta: " + númeroVenta;
     }
 }

@@ -8,6 +8,7 @@ import com.example.proyecto_final_pmdm_daniel_carmona_salazar.Clases.Venta;
 import com.example.proyecto_final_pmdm_daniel_carmona_salazar.Clases.Videojuego;
 
 import java.io.ByteArrayInputStream;
+import java.io.ByteArrayOutputStream;
 import java.sql.Blob;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -87,9 +88,12 @@ public class VentaDB {
             PreparedStatement sentenciaPreparada2 = conexión.prepareStatement(ordenSQL2);
             sentenciaPreparada2.setString(1, v.getVideojuego().getTítuloVideojuego());
             sentenciaPreparada2.setInt(2, v.getVideojuego().getPegiVideojuego());
+            sentenciaPreparada2.setString(3, v.getVideojuego().getGéneroVideojuego());
             Bitmap logoBlob = v.getVideojuego().getLogoVideojuego();
-            byte[] logoArray = bitmapAByte(logoBlob);
-            sentenciaPreparada2.setBinaryStream(4, new ByteArrayInputStream(logoArray), logoArray.length);
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            logoBlob.compress(Bitmap.CompressFormat.PNG, 0, baos);
+            ByteArrayInputStream bais = new ByteArrayInputStream(baos.toByteArray());
+            sentenciaPreparada2.setBinaryStream(4, bais);
             int filasAfectadas2 = sentenciaPreparada2.executeUpdate();
             sentenciaPreparada2.close();
 
@@ -169,41 +173,78 @@ public class VentaDB {
             return false;
         }
         try {
-            //Actualizo el empleado
-            String ordenSQL = "UPDATE empleado SET nombre_empleado = ?, apellidos_empleados = ?, domicilio_empleado = ?, telefono_empleado = ? WHERE id_empleado = ?";
+            //Recojo el ID del empleado y del videojuego
+            String ordenSQL = "SELECT id_videojuego FROM videojuego v WHERE título_videojuego = ?;";
             PreparedStatement sentenciaPreparada = conexión.prepareStatement(ordenSQL);
-            sentenciaPreparada.setString(1, v.getEmpleado().getNombreEmpleado());
-            sentenciaPreparada.setString(2, v.getEmpleado().getApellidosEmpleado());
-            sentenciaPreparada.setString(3, v.getEmpleado().getDomicilioEmpleado());
-            sentenciaPreparada.setString(4, v.getEmpleado().getTelefonoEmpleado());
-            sentenciaPreparada.setInt(5, v.getEmpleado().getIdEmpleado());
-            int filasAfectadas1 = sentenciaPreparada.executeUpdate();
+            sentenciaPreparada.setString(1, v.getVideojuego().getTítuloVideojuego());
+            ResultSet resultado = sentenciaPreparada.executeQuery();
+            int id_videojuego = 0;
+            while(resultado.next()) {
+                id_videojuego = resultado.getInt("id_videojuego");
+            }
+            resultado.close();
             sentenciaPreparada.close();
 
-            //Actualizo el videojuego
-            String ordenSQL2 = "UPDATE videojuego SET título_videojuego = ?, pegi_videojuego = ?, genero_videojuego = ?, logo_videojuego = ? WHERE id_videojuego  = ?";
+            String ordenSQL2 = "SELECT id_empleado FROM empleado e WHERE nombre_empleado = ?;";
             PreparedStatement sentenciaPreparada2 = conexión.prepareStatement(ordenSQL2);
-            sentenciaPreparada2.setString(1, v.getVideojuego().getTítuloVideojuego());
-            sentenciaPreparada2.setInt(2, v.getVideojuego().getPegiVideojuego());
-            sentenciaPreparada2.setString(3, v.getVideojuego().getGéneroVideojuego());
-            Bitmap logoBlob = v.getVideojuego().getLogoVideojuego();
-            byte[] logoArray = bitmapAByte(logoBlob);
-            sentenciaPreparada2.setBinaryStream(4, new ByteArrayInputStream(logoArray), logoArray.length);
-            sentenciaPreparada2.setInt(5, v.getVideojuego().getIdVideojuego());
-            int filasAfectadas2 = sentenciaPreparada2.executeUpdate();
+            sentenciaPreparada2.setString(1, v.getEmpleado().getNombreEmpleado());
+            ResultSet resultado2 = sentenciaPreparada2.executeQuery();
+            int id_empleado = 0;
+            while(resultado2.next()) {
+                id_empleado = resultado2.getInt("id_empleado");
+            }
+            resultado2.close();
             sentenciaPreparada2.close();
 
-            //Actualizo la venta
-            String ordenSQL3 = "UPDATE venta SET numero_venta = ?, EMPLEADO_id_empleado = ?, VIDEOJUEGO_id_videojuego = ? WHERE id_venta = ?";
+            //Actualizo el empleado
+            String ordenSQL3 = "UPDATE empleado SET nombre_empleado = ?, apellidos_empleados = ?, domicilio_empleado = ?, telefono_empleado = ? WHERE id_empleado = ?";
             PreparedStatement sentenciaPreparada3 = conexión.prepareStatement(ordenSQL3);
-            sentenciaPreparada3.setInt(1, v.getNúmeroVenta());
-            sentenciaPreparada3.setInt(2, v.getEmpleado().getIdEmpleado());
-            sentenciaPreparada3.setInt(3, v.getVideojuego().getIdVideojuego());
-            sentenciaPreparada3.setInt(4, v.getIdVenta());
-            int filasAfectadas3 = sentenciaPreparada3.executeUpdate();
+            sentenciaPreparada3.setString(1, v.getEmpleado().getNombreEmpleado());
+            sentenciaPreparada3.setString(2, v.getEmpleado().getApellidosEmpleado());
+            sentenciaPreparada3.setString(3, v.getEmpleado().getDomicilioEmpleado());
+            sentenciaPreparada3.setString(4, v.getEmpleado().getTelefonoEmpleado());
+            sentenciaPreparada3.setInt(5, id_empleado);
+            int filasAfectadas1 = sentenciaPreparada3.executeUpdate();
             sentenciaPreparada3.close();
 
+            //Actualizo el videojuego
+            String ordenSQL4 = "UPDATE videojuego SET título_videojuego = ?, pegi_videojuego = ?, genero_videojuego = ?, logo_videojuego = ? WHERE id_videojuego  = ?";
+            PreparedStatement sentenciaPreparada4 = conexión.prepareStatement(ordenSQL4);
+            sentenciaPreparada4.setString(1, v.getVideojuego().getTítuloVideojuego());
+            sentenciaPreparada4.setInt(2, v.getVideojuego().getPegiVideojuego());
+            sentenciaPreparada4.setString(3, v.getVideojuego().getGéneroVideojuego());
+            Bitmap logoBlob = v.getVideojuego().getLogoVideojuego();
+            ByteArrayOutputStream baos = new ByteArrayOutputStream();
+            logoBlob.compress(Bitmap.CompressFormat.PNG, 0, baos);
+            ByteArrayInputStream bais = new ByteArrayInputStream(baos.toByteArray());
+            sentenciaPreparada4.setBinaryStream(4, bais);
+            sentenciaPreparada4.setInt(5, id_videojuego);
+            int filasAfectadas2 = sentenciaPreparada4.executeUpdate();
+            sentenciaPreparada4.close();
+
+            //Recojo el ID de la venta
+            String ordenSQL5 = "SELECT id_venta FROM venta v WHERE numero_venta = ?;";
+            PreparedStatement sentenciaPreparada5 = conexión.prepareStatement(ordenSQL5);
+            sentenciaPreparada5.setInt(1, v.getNúmeroVenta());
+            ResultSet resultado3 = sentenciaPreparada5.executeQuery();
+            int id_venta = 0;
+            while(resultado3.next()) {
+                id_venta = resultado3.getInt("id_venta");
+            }
+            resultado3.close();
+            sentenciaPreparada5.close();
+
+            //Actualizo la venta
+            String ordenSQL6 = "UPDATE venta SET numero_venta = ?, EMPLEADO_id_empleado = ?, VIDEOJUEGO_id_videojuego = ? WHERE id_venta = ?";
+            PreparedStatement sentenciaPreparada6 = conexión.prepareStatement(ordenSQL6);
+            sentenciaPreparada6.setInt(1, v.getNúmeroVenta());
+            sentenciaPreparada6.setInt(2, id_empleado);
+            sentenciaPreparada6.setInt(3, id_videojuego);
+            sentenciaPreparada6.setInt(4, id_venta);
+            int filasAfectadas3 = sentenciaPreparada6.executeUpdate();
+            sentenciaPreparada6.close();
             conexión.close();
+
             if(filasAfectadas1 > 0 && filasAfectadas2 > 0 && filasAfectadas3 > 0) {
                 return true;
             }else {

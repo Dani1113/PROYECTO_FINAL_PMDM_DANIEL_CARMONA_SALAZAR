@@ -30,11 +30,9 @@ public class BorrarVentaActivity extends AppCompatActivity implements AdapterVie
         setContentView(R.layout.activity_borrar_venta);
         spVenta = (Spinner) findViewById(R.id.spVenta);
         ventas = VentaController.obtenerVenta();
-        for(Venta v: ventas) {
-            System.out.println(v.toString());
-        }
         spVenta.setOnItemSelectedListener(this);
-        ventasAdapter = new ArrayAdapter<Venta>(this, R.layout.support_simple_spinner_dropdown_item, ventas);
+        ventasAdapter = new ArrayAdapter<Venta>(this, R.layout.spinner_item, ventas);
+        ventasAdapter.setDropDownViewResource(R.layout.spinner_item);
         spVenta.setAdapter(ventasAdapter);
     }
 
