@@ -22,9 +22,9 @@ USE `tienda_videojuegos_android` ;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `tienda_videojuegos_android`.`empleado` (
   `id_empleado` INT NOT NULL AUTO_INCREMENT,
-  `nombre_empleado` VARCHAR(45) NOT NULL,
-  `apellidos_empleado` VARCHAR(45) NOT NULL,
-  `domicilio_empleado` VARCHAR(45) NOT NULL,
+  `nombre_empleado` VARCHAR(200) NOT NULL,
+  `apellidos_empleado` VARCHAR(200) NOT NULL,
+  `domicilio_empleado` VARCHAR(200) NOT NULL,
   `telefono_empleado` VARCHAR(9) NOT NULL,
   PRIMARY KEY (`id_empleado`))
 ENGINE = InnoDB
@@ -36,9 +36,9 @@ DEFAULT CHARACTER SET = utf8;
 -- -----------------------------------------------------
 CREATE TABLE IF NOT EXISTS `tienda_videojuegos_android`.`videojuego` (
   `id_videojuego` INT NOT NULL AUTO_INCREMENT,
-  `título_videojuego` VARCHAR(45) NOT NULL,
+  `título_videojuego` VARCHAR(200) NOT NULL,
   `pegi_videojuego` INT NOT NULL,
-  `genero_videojuego` VARCHAR(45) NOT NULL,
+  `genero_videojuego` VARCHAR(200) NOT NULL,
   `logo_videojuego` MEDIUMBLOB NULL DEFAULT NULL,
   PRIMARY KEY (`id_videojuego`))
 ENGINE = InnoDB
