@@ -25,6 +25,8 @@ import static com.example.proyecto_final_pmdm_daniel_carmona_salazar.Utilidades.
 public class ActualizarVentaActivity2 extends AppCompatActivity {
 
     private Venta vSeleccionada = null;
+    private Empleado eSeleccionado = null;
+    private Videojuego videojuegoSeleccionado = null;
     private byte[] byteArrayLogo = null;
     private EditText edtTítuloVA = null;
     private EditText edtPEGIVA = null;
@@ -49,22 +51,32 @@ public class ActualizarVentaActivity2 extends AppCompatActivity {
         edtDomicilioEA = (EditText) findViewById(R.id.edtDomicilioEA);
         edtTeléfonoEA = (EditText) findViewById(R.id.edtTeléfonoEA);
         edtNVentaA = (EditText) findViewById(R.id.edtNVentaA);
+
         Intent intent = getIntent();
         if(intent != null){
-            vSeleccionada = (Venta) intent.getSerializableExtra(ActualizarVentaActivity1.EXTRA_OBJETO_VENTA);
+            vSeleccionada = (Venta) intent.getSerializableExtra(ActualizarVentaActivity1.EXTRA_OBJETO_VENTA_SIN_VIDEOJUEGO_NI_EMPLEADO);
             if(vSeleccionada != null){
-                edtTítuloVA.setText(vSeleccionada.getVideojuego().getTítuloVideojuego());
-                edtPEGIVA.setText(String.valueOf(vSeleccionada.getVideojuego().getPegiVideojuego()));
-                edtGéneroVA.setText(vSeleccionada.getVideojuego().getGéneroVideojuego());
-                edtNombreEA.setText(vSeleccionada.getEmpleado().getNombreEmpleado());
-                edtApellidosEA.setText(vSeleccionada.getEmpleado().getApellidosEmpleado());
-                edtDomicilioEA.setText(vSeleccionada.getEmpleado().getDomicilioEmpleado());
-                edtTeléfonoEA.setText(vSeleccionada.getEmpleado().getTelefonoEmpleado());
                 edtNVentaA.setText(String.valueOf(vSeleccionada.getNúmeroVenta()));
             }
-            byteArrayLogo = intent.getByteArrayExtra(ActualizarVentaActivity1.EXTRA_IMAGEN_VENTA);
+
+            byteArrayLogo = intent.getByteArrayExtra(ActualizarVentaActivity1.EXTRA_IMAGEN_VIDEOJUEGO);
             if(byteArrayLogo != null){
                 imgA.setImageBitmap(bytesABitmap(byteArrayLogo));
+            }
+
+            videojuegoSeleccionado = (Videojuego) intent.getSerializableExtra(ActualizarVentaActivity1.EXTRA_OBJETO_VIDEOJUEGO_SIN_IMAGEN);
+            if(videojuegoSeleccionado != null){
+                edtTítuloVA.setText(videojuegoSeleccionado.getTítuloVideojuego());
+                edtPEGIVA.setText(String.valueOf(videojuegoSeleccionado.getPegiVideojuego()));
+                edtGéneroVA.setText(videojuegoSeleccionado.getGéneroVideojuego());
+            }
+
+            eSeleccionado = (Empleado) intent.getSerializableExtra(ActualizarVentaActivity1.EXTRA_OBJETO_EMPLEADO);
+            if(eSeleccionado != null){
+                edtNombreEA.setText(eSeleccionado.getNombreEmpleado());
+                edtApellidosEA.setText(eSeleccionado.getApellidosEmpleado());
+                edtDomicilioEA.setText(eSeleccionado.getDomicilioEmpleado());
+                edtTeléfonoEA.setText(eSeleccionado.getTelefonoEmpleado());
             }
         }
     }

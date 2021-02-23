@@ -35,6 +35,12 @@ public class Venta implements Serializable {
         this.videojuego = new Videojuego();
     }
 
+    public Venta(int númeroVenta){
+        this.númeroVenta = númeroVenta;
+        this.empleado = null;
+        this.videojuego = null;
+    }
+
     //GETTERS & SETTERS
     public int getIdVenta() {
         return idVenta;

@@ -32,6 +32,13 @@ public class Videojuego implements Serializable {
         this.logoVideojuego = logoVideojuego;
     }
 
+    public Videojuego(String títuloVideojuego, int pegiVideojuego, String géneroVideojuego) {
+        this.títuloVideojuego = títuloVideojuego;
+        this.pegiVideojuego = pegiVideojuego;
+        this.géneroVideojuego = géneroVideojuego;
+        this.logoVideojuego = null;
+    }
+
     public Videojuego() {
         this.idVideojuego = 0;
         this.títuloVideojuego = "";
