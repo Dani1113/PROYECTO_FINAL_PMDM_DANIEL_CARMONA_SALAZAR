@@ -193,14 +193,16 @@ public class VentaDB {
             resultado2.close();
             sentenciaPreparada2.close();
 
+
             //Actualizo el empleado
-            String ordenSQL3 = "UPDATE empleado SET nombre_empleado = ?, apellidos_empleados = ?, domicilio_empleado = ?, telefono_empleado = ? WHERE id_empleado = ?";
+            String ordenSQL3 = "UPDATE empleado SET nombre_empleado = ?, apellidos_empleado = ?, domicilio_empleado = ?, telefono_empleado = ? WHERE id_empleado = ?";
             PreparedStatement sentenciaPreparada3 = conexión.prepareStatement(ordenSQL3);
             sentenciaPreparada3.setString(1, v.getEmpleado().getNombreEmpleado());
             sentenciaPreparada3.setString(2, v.getEmpleado().getApellidosEmpleado());
             sentenciaPreparada3.setString(3, v.getEmpleado().getDomicilioEmpleado());
             sentenciaPreparada3.setString(4, v.getEmpleado().getTelefonoEmpleado());
             sentenciaPreparada3.setInt(5, id_empleado);
+            Log.i("mensaje", ordenSQL3);
             int filasAfectadas1 = sentenciaPreparada3.executeUpdate();
             sentenciaPreparada3.close();
 
@@ -240,9 +242,10 @@ public class VentaDB {
             sentenciaPreparada6.setInt(4, id_venta);
             int filasAfectadas3 = sentenciaPreparada6.executeUpdate();
             sentenciaPreparada6.close();
+
             conexión.close();
 
-            if(filasAfectadas1 > 0 && filasAfectadas2 > 0 && filasAfectadas3 > 0) {
+            if(filasAfectadas1 > 0 /*&& filasAfectadas2 > 0 && filasAfectadas3 > 0*/) {
                 return true;
             }else {
                 return false;
