@@ -202,7 +202,6 @@ public class VentaDB {
             sentenciaPreparada3.setString(3, v.getEmpleado().getDomicilioEmpleado());
             sentenciaPreparada3.setString(4, v.getEmpleado().getTelefonoEmpleado());
             sentenciaPreparada3.setInt(5, id_empleado);
-            Log.i("mensaje", ordenSQL3);
             int filasAfectadas1 = sentenciaPreparada3.executeUpdate();
             sentenciaPreparada3.close();
 
