@@ -5,9 +5,10 @@ import android.os.Build;
 
 import androidx.annotation.RequiresApi;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class Videojuego {
+public class Videojuego implements Serializable {
     //ATRIBUTOS
     private int idVideojuego;
     private String títuloVideojuego;

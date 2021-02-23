@@ -25,7 +25,7 @@ public class MenuActivity extends AppCompatActivity {
     }
 
     public void actualizarVenta(View view) {
-        Intent intent = new Intent(this, ActualizarVentaActivity.class);
+        Intent intent = new Intent(this, ActualizarVentaActivity1.class);
         startActivity(intent);
     }
 

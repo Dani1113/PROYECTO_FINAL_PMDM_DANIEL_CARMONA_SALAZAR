@@ -20,9 +20,9 @@ import java.util.ArrayList;
 public class BorrarVentaActivity extends AppCompatActivity implements AdapterView.OnItemSelectedListener {
 
     private Spinner spVenta = null;
-    ArrayList<Venta> ventas = null;
-    ArrayAdapter<Venta> ventasAdapter = null;
-    Venta vSeleccionada = null;
+    private ArrayList<Venta> ventas = null;
+    private ArrayAdapter<Venta> ventasAdapter = null;
+    private Venta vSeleccionada = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -76,6 +76,4 @@ public class BorrarVentaActivity extends AppCompatActivity implements AdapterVie
     public void mostrarToast (String mensaje){
         Toast.makeText(this, mensaje, Toast.LENGTH_SHORT).show();
     }
-
-
 }

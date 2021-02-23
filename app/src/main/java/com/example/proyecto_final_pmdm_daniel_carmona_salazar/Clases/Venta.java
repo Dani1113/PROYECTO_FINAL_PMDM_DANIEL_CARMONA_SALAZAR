@@ -4,9 +4,10 @@ import android.os.Build;
 
 import androidx.annotation.RequiresApi;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class Venta {
+public class Venta implements Serializable {
     //ATRIBUTOS
     private int idVenta;
     private int númeroVenta;

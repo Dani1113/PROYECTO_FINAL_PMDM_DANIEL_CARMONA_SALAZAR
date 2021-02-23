@@ -4,9 +4,10 @@ import android.os.Build;
 
 import androidx.annotation.RequiresApi;
 
+import java.io.Serializable;
 import java.util.Objects;
 
-public class Empleado {
+public class Empleado implements Serializable {
     //ATRIBUTOS
     private int idEmpleado;
     private String nombreEmpleado;

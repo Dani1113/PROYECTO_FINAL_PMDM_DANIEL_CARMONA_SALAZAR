@@ -17,9 +17,6 @@ import java.sql.SQLException;
 import java.sql.Statement;
 import java.util.ArrayList;
 
-import javax.sql.rowset.serial.SerialBlob;
-
-import static com.example.proyecto_final_pmdm_daniel_carmona_salazar.Utilidades.Utilidades.bitmapAByte;
 import static com.example.proyecto_final_pmdm_daniel_carmona_salazar.Utilidades.Utilidades.blobABitmap;
 
 public class VentaDB {

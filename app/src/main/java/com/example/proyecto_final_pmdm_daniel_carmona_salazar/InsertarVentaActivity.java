@@ -44,7 +44,7 @@ public class InsertarVentaActivity extends AppCompatActivity {
         edtApellidos = (EditText) findViewById(R.id.edtApellidoE);
         edtDomicilio = (EditText) findViewById(R.id.edtDomicilioE);
         edtTeléfono = (EditText) findViewById(R.id.edtTeléfonoE);
-        edtNVenta = (EditText) findViewById(R.id.edtNúmeroV);
+        edtNVenta = (EditText) findViewById(R.id.edtNVenta);
     }
 
     public void examinarImagen(View view) {
@@ -111,6 +111,7 @@ public class InsertarVentaActivity extends AppCompatActivity {
         }else if(nVenta <= 0) {
             edtNVenta.setError("El valor introducido debe ser mayor que 0");
         }
+
         AlertDialog.Builder alertaConfirmación = new AlertDialog.Builder(this);
         alertaConfirmación.setTitle("¿Desea crear la venta?");
         alertaConfirmación.setPositiveButton("SI", new DialogInterface.OnClickListener() {

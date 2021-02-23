@@ -1,0 +1,224 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/constrintLayout"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@color/fondo"
+    tools:context=".ActualizarVentaActivity2">
+
+    <EditText
+        android:id="@+id/edtNVentaA"
+        android:layout_width="141dp"
+        android:layout_height="38dp"
+        android:layout_marginTop="16dp"
+        android:autofillHints=""
+        android:hint="@string/numero_de_venta"
+        android:inputType="numberSigned"
+        android:textColorHint="@color/colorHint"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@+id/textView11"
+        app:layout_constraintStart_toStartOf="@+id/textView11"
+        app:layout_constraintTop_toBottomOf="@+id/textView11" />
+
+    <TextView
+        android:id="@+id/textView11"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="492dp"
+        android:text="@string/venta"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView14" />
+
+    <TextView
+        android:id="@+id/textView14"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:text="@string/actualizar_venta"
+        android:textColor="@color/black"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView15"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="40dp"
+        android:text="@string/videojuego"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView14" />
+
+    <TextView
+        android:id="@+id/textView16"
+        android:layout_width="143dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="40dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginRight="32dp"
+        android:text="@string/empleado"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView14" />
+
+    <EditText
+        android:id="@+id/edtTítuloVA"
+        android:layout_width="0dp"
+        android:layout_height="39dp"
+        android:layout_marginTop="16dp"
+        android:autofillHints=""
+        android:hint="@string/titulo"
+        android:inputType="text"
+        android:textColorHint="@color/colorHint"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@+id/textView15"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/textView15"
+        app:layout_constraintTop_toBottomOf="@+id/textView15" />
+
+    <EditText
+        android:id="@+id/edtPEGIVA"
+        android:layout_width="0dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="16dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:hint="@string/pegi"
+        android:inputType="numberSigned"
+        android:textColorHint="@color/colorHint"
+        app:layout_constraintEnd_toEndOf="@+id/edtTítuloVA"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/edtTítuloVA"
+        app:layout_constraintTop_toBottomOf="@+id/edtTítuloVA" />
+
+    <EditText
+        android:id="@+id/edtGéneroVA"
+        android:layout_width="0dp"
+        android:layout_height="39dp"
+        android:layout_marginTop="16dp"
+        android:autofillHints=""
+        android:hint="@string/genero"
+        android:inputType="text"
+        android:textColorHint="@color/colorHint"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@+id/edtPEGIVA"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/edtPEGIVA"
+        app:layout_constraintTop_toBottomOf="@+id/edtPEGIVA" />
+
+    <ImageView
+        android:id="@+id/idImagenA"
+        android:layout_width="0dp"
+        android:layout_height="145dp"
+        android:layout_marginTop="16dp"
+        android:contentDescription="@string/examinar"
+        app:layout_constraintEnd_toEndOf="@+id/edtGéneroVA"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/edtGéneroVA"
+        app:layout_constraintTop_toBottomOf="@+id/edtGéneroVA"
+        app:srcCompat="@drawable/img_no_disponible" />
+
+    <Button
+        android:id="@+id/btExaminar3"
+        android:layout_width="0dp"
+        android:layout_height="39dp"
+        android:layout_marginTop="4dp"
+        android:onClick="examinarImagen"
+        android:text="@string/examinar"
+        app:layout_constraintEnd_toEndOf="@+id/idImagenA"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/idImagenA"
+        app:layout_constraintTop_toBottomOf="@+id/idImagenA" />
+
+    <EditText
+        android:id="@+id/edtNombreEA"
+        android:layout_width="0dp"
+        android:layout_height="39dp"
+        android:layout_marginTop="16dp"
+        android:autofillHints=""
+        android:hint="@string/nombreE"
+        android:inputType="text"
+        android:textColorHint="@color/colorHint"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@+id/textView16"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/textView16"
+        app:layout_constraintTop_toBottomOf="@+id/textView16" />
+
+    <EditText
+        android:id="@+id/edtApellidosEA"
+        android:layout_width="0dp"
+        android:layout_height="39dp"
+        android:layout_marginTop="16dp"
+        android:autofillHints=""
+        android:hint="@string/apellidos"
+        android:inputType="text"
+        android:textColorHint="@color/colorHint"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@+id/edtNombreEA"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/edtNombreEA"
+        app:layout_constraintTop_toBottomOf="@+id/edtNombreEA" />
+
+    <EditText
+        android:id="@+id/edtDomicilioEA"
+        android:layout_width="0dp"
+        android:layout_height="39dp"
+        android:layout_marginTop="16dp"
+        android:autofillHints=""
+        android:hint="@string/domicilio"
+        android:inputType="text"
+        android:textColorHint="@color/colorHint"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@+id/edtApellidosEA"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/edtApellidosEA"
+        app:layout_constraintTop_toBottomOf="@+id/edtApellidosEA" />
+
+    <EditText
+        android:id="@+id/edtTeléfonoEA"
+        android:layout_width="0dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="16dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:hint="@string/telefono"
+        android:inputType="numberSigned"
+        android:textColorHint="@color/colorHint"
+        app:layout_constraintEnd_toEndOf="@+id/edtDomicilioEA"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/edtDomicilioEA"
+        app:layout_constraintTop_toBottomOf="@+id/edtDomicilioEA" />
+
+    <Button
+        android:id="@+id/btActualizarVenta2"
+        android:layout_width="385dp"
+        android:layout_height="50dp"
+        android:layout_marginStart="32dp"
+        android:layout_marginLeft="32dp"
+        android:layout_marginTop="20dp"
+        android:layout_marginEnd="32dp"
+        android:layout_marginRight="32dp"
+        android:text="@string/actualizar_venta"
+        android:onClick="actualizarVentaActivity2"
+        app:layout_constraintEnd_toEndOf="@+id/edtNVentaA"
+        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintStart_toStartOf="@+id/edtNVentaA"
+        app:layout_constraintTop_toBottomOf="@+id/edtNVentaA" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
