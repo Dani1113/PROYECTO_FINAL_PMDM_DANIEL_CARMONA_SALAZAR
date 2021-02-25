@@ -7,4 +7,37 @@
     android:background="@color/fondo"
     tools:context=".MostrarInfoActivity">
 
+    <TextView
+        android:id="@+id/textView12"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:text="@string/mostrar_ventas"
+        android:textColor="@color/black"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/rvVentas"
+        android:layout_width="360dp"
+        android:layout_height="545dp"
+        android:layout_marginTop="24dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView12" />
+
+    <Button
+        android:id="@+id/btRefrescar"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="24dp"
+        android:text="@string/refrescar"
+        android:onClick="refrescarRecyclerView"
+        app:layout_constraintEnd_toEndOf="@+id/rvVentas"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="@+id/rvVentas"
+        app:layout_constraintTop_toBottomOf="@+id/rvVentas" />
 </androidx.constraintlayout.widget.ConstraintLayout>

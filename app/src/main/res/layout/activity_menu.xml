@@ -22,10 +22,11 @@
         android:id="@+id/btBorrarVenta"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:text="@string/borrar_venta"
+        android:layout_marginTop="72dp"
         android:onClick="borrarVenta"
+        android:text="@string/borrar_venta"
         app:layout_constraintEnd_toEndOf="@+id/btNuevaVenta"
+        app:layout_constraintHorizontal_bias="0.6"
         app:layout_constraintStart_toStartOf="@+id/btNuevaVenta"
         app:layout_constraintTop_toBottomOf="@+id/btNuevaVenta" />
 
@@ -33,9 +34,9 @@
         android:id="@+id/btActualizarVenta"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:text="@string/actualizar_venta"
+        android:layout_marginTop="72dp"
         android:onClick="actualizarVenta"
+        android:text="@string/actualizar_venta"
         app:layout_constraintEnd_toEndOf="@+id/btBorrarVenta"
         app:layout_constraintStart_toStartOf="@+id/btBorrarVenta"
         app:layout_constraintTop_toBottomOf="@+id/btBorrarVenta" />
@@ -44,24 +45,13 @@
         android:id="@+id/btMostrarInformacion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:text="@string/mostrar_informacion"
+        android:layout_marginTop="72dp"
         android:onClick="mostrarInformación"
+        android:text="@string/mostrar_informacion"
         app:layout_constraintEnd_toEndOf="@+id/btActualizarVenta"
         app:layout_constraintHorizontal_bias="0.513"
         app:layout_constraintStart_toStartOf="@+id/btActualizarVenta"
         app:layout_constraintTop_toBottomOf="@+id/btActualizarVenta" />
-
-    <Button
-        android:id="@+id/btBuscarInformacion"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:text="@string/buscar_informacion"
-        android:onClick="buscarInformación"
-        app:layout_constraintEnd_toEndOf="@+id/btMostrarInformacion"
-        app:layout_constraintStart_toStartOf="@+id/btMostrarInformacion"
-        app:layout_constraintTop_toBottomOf="@+id/btMostrarInformacion" />
 
     <ImageView
         android:id="@+id/imageView2"

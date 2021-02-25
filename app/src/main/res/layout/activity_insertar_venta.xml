@@ -9,10 +9,38 @@
     android:orientation="vertical"
     tools:context=".InsertarVentaActivity">
 
+    <TextView
+        android:id="@+id/textView5"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="28dp"
+        android:text="@string/insertar_venta"
+        android:textColor="@color/black"
+        android:textSize="34sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="24dp"
+        android:layout_marginLeft="24dp"
+        android:layout_marginTop="40dp"
+        android:text="@string/videojuego"
+        android:textColor="@color/black"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+
     <EditText
         android:id="@+id/edtTítuloV"
         android:layout_width="0dp"
-        android:layout_height="39dp"
+        android:layout_height="45dp"
         android:layout_marginTop="16dp"
         android:autofillHints=""
         android:hint="@string/titulo"
@@ -27,7 +55,7 @@
     <EditText
         android:id="@+id/edtGéneroV"
         android:layout_width="0dp"
-        android:layout_height="39dp"
+        android:layout_height="45dp"
         android:layout_marginTop="16dp"
         android:autofillHints=""
         android:hint="@string/genero"
@@ -54,93 +82,29 @@
         app:layout_constraintStart_toStartOf="@+id/edtTítuloV"
         app:layout_constraintTop_toBottomOf="@+id/edtTítuloV" />
 
-    <EditText
-        android:id="@+id/edtApellidoE"
+    <ImageView
+        android:id="@+id/idImagen"
+        android:layout_width="144dp"
+        android:layout_height="142dp"
+        android:layout_marginTop="16dp"
+        android:contentDescription="@string/id_imagen"
+        app:layout_constraintEnd_toEndOf="@+id/edtGéneroV"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/edtGéneroV"
+        app:layout_constraintTop_toBottomOf="@+id/edtGéneroV"
+        app:srcCompat="@drawable/img_no_disponible" />
+
+    <Button
+        android:id="@+id/btExaminar"
         android:layout_width="0dp"
         android:layout_height="39dp"
-        android:layout_marginTop="16dp"
-        android:autofillHints=""
-        android:hint="@string/apellidos"
-        android:inputType="text"
-        android:textColorHint="@color/colorHint"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="@+id/edtNombreE"
-        app:layout_constraintHorizontal_bias="0"
-        app:layout_constraintStart_toStartOf="@+id/edtNombreE"
-        app:layout_constraintTop_toBottomOf="@+id/edtNombreE" />
-
-    <EditText
-        android:id="@+id/edtNombreE"
-        android:layout_width="0dp"
-        android:layout_height="38dp"
-        android:layout_marginTop="16dp"
-        android:autofillHints=""
-        android:hint="@string/nombreE"
-        android:inputType="text"
-        android:textColorHint="@color/colorHint"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="@+id/textView7"
-        app:layout_constraintHorizontal_bias="0"
-        app:layout_constraintStart_toStartOf="@+id/textView7"
-        app:layout_constraintTop_toBottomOf="@+id/textView7" />
-
-    <EditText
-        android:id="@+id/edtTeléfonoE"
-        android:layout_width="0dp"
-        android:layout_height="40dp"
-        android:layout_marginTop="16dp"
-        android:autofillHints=""
-        android:hint="@string/telefono"
-        android:inputType="numberSigned"
-        android:textColorHint="@color/colorHint"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="@+id/edtDomicilioE"
+        android:layout_marginTop="8dp"
+        android:onClick="examinarImagen"
+        android:text="@string/examinar"
+        app:layout_constraintEnd_toEndOf="@+id/idImagen"
         app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/edtDomicilioE"
-        app:layout_constraintTop_toBottomOf="@+id/edtDomicilioE" />
-
-    <EditText
-        android:id="@+id/edtDomicilioE"
-        android:layout_width="0dp"
-        android:layout_height="41dp"
-        android:layout_marginTop="16dp"
-        android:autofillHints=""
-        android:hint="@string/domicilio"
-        android:inputType="text"
-        android:textColorHint="@color/colorHint"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="@+id/edtApellidoE"
-        app:layout_constraintHorizontal_bias="0"
-        app:layout_constraintStart_toStartOf="@+id/edtApellidoE"
-        app:layout_constraintTop_toBottomOf="@+id/edtApellidoE" />
-
-    <EditText
-        android:id="@+id/edtNVenta"
-        android:layout_width="141dp"
-        android:layout_height="38dp"
-        android:layout_marginTop="16dp"
-        android:autofillHints=""
-        android:hint="@string/numero_de_venta"
-        android:inputType="numberSigned"
-        android:textColorHint="@color/colorHint"
-        android:textSize="18sp"
-        app:layout_constraintEnd_toEndOf="@+id/textView8"
-        app:layout_constraintStart_toStartOf="@+id/textView8"
-        app:layout_constraintTop_toBottomOf="@+id/textView8" />
-
-    <TextView
-        android:id="@+id/textView5"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="28dp"
-        android:text="@string/insertar_venta"
-        android:textColor="@color/black"
-        android:textSize="34sp"
-        android:textStyle="bold"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent" />
+        app:layout_constraintStart_toStartOf="@+id/idImagen"
+        app:layout_constraintTop_toBottomOf="@+id/idImagen" />
 
     <TextView
         android:id="@+id/textView7"
@@ -156,19 +120,65 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
-    <TextView
-        android:id="@+id/textView6"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginStart="24dp"
-        android:layout_marginLeft="24dp"
-        android:layout_marginTop="40dp"
-        android:text="@string/videojuego"
-        android:textColor="@color/black"
-        android:textSize="24sp"
-        android:textStyle="bold"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView5" />
+    <EditText
+        android:id="@+id/edtNombreE"
+        android:layout_width="0dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="16dp"
+        android:autofillHints=""
+        android:hint="@string/nombreE"
+        android:inputType="text"
+        android:textColorHint="@color/colorHint"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@+id/textView7"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintStart_toStartOf="@+id/textView7"
+        app:layout_constraintTop_toBottomOf="@+id/textView7" />
+
+    <EditText
+        android:id="@+id/edtApellidoE"
+        android:layout_width="0dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="16dp"
+        android:autofillHints=""
+        android:hint="@string/apellidos"
+        android:inputType="text"
+        android:textColorHint="@color/colorHint"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@+id/edtNombreE"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintStart_toStartOf="@+id/edtNombreE"
+        app:layout_constraintTop_toBottomOf="@+id/edtNombreE" />
+
+    <EditText
+        android:id="@+id/edtDomicilioE"
+        android:layout_width="0dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="16dp"
+        android:autofillHints=""
+        android:hint="@string/domicilio"
+        android:inputType="text"
+        android:textColorHint="@color/colorHint"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@+id/edtApellidoE"
+        app:layout_constraintHorizontal_bias="0"
+        app:layout_constraintStart_toStartOf="@+id/edtApellidoE"
+        app:layout_constraintTop_toBottomOf="@+id/edtApellidoE" />
+
+    <EditText
+        android:id="@+id/edtTeléfonoE"
+        android:layout_width="0dp"
+        android:layout_height="45dp"
+        android:layout_marginTop="16dp"
+        android:autofillHints=""
+        android:hint="@string/telefono"
+        android:inputType="numberSigned"
+        android:textColorHint="@color/colorHint"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@+id/edtDomicilioE"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toStartOf="@+id/edtDomicilioE"
+        app:layout_constraintTop_toBottomOf="@+id/edtDomicilioE" />
 
     <TextView
         android:id="@+id/textView8"
@@ -183,28 +193,19 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/textView5" />
 
-    <ImageView
-        android:id="@+id/idImagen"
-        android:layout_width="0dp"
-        android:layout_height="145dp"
+    <EditText
+        android:id="@+id/edtNVenta"
+        android:layout_width="141dp"
+        android:layout_height="45dp"
         android:layout_marginTop="16dp"
-        android:contentDescription="@string/examinar"
-        app:layout_constraintEnd_toEndOf="@+id/edtGéneroV"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/edtGéneroV"
-        app:layout_constraintTop_toBottomOf="@+id/edtGéneroV" />
-
-    <Button
-        android:id="@+id/btExaminar"
-        android:layout_width="0dp"
-        android:layout_height="39dp"
-        android:layout_marginTop="4dp"
-        android:onClick="examinarImagen"
-        android:text="@string/examinar"
-        app:layout_constraintEnd_toEndOf="@+id/idImagen"
-        app:layout_constraintHorizontal_bias="0.0"
-        app:layout_constraintStart_toStartOf="@+id/idImagen"
-        app:layout_constraintTop_toBottomOf="@+id/idImagen" />
+        android:autofillHints=""
+        android:hint="@string/numero_de_venta"
+        android:inputType="numberSigned"
+        android:textColorHint="@color/colorHint"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="@+id/textView8"
+        app:layout_constraintStart_toStartOf="@+id/textView8"
+        app:layout_constraintTop_toBottomOf="@+id/textView8" />
 
     <Button
         android:id="@+id/btCrearVenta"

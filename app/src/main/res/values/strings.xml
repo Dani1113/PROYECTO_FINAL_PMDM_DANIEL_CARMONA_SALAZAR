@@ -26,4 +26,12 @@
     <string name="examinar">EXAMINAR</string>
     <string name="numero_de_venta">Nº venta:</string>
     <string name="crear_venta">CREAR VENTA</string>
+    <string name="mostrar_ventas">MOSTRAR VENTAS</string>
+    <string name="empleado2">Empleado:</string>
+    <string name="videojuego2">Videojuego:</string>
+    <string name="imgrv">imgRV</string>
+    <string name="refrescar">REFRESCAR</string>
+    <string name="informacion_en_detalle">INFORMACIÓN EN DETALLE</string>
+    <string name="logodetalle">logoDetalle</string>
+    <string name="id_imagen">idImagen</string>
 </resources>
