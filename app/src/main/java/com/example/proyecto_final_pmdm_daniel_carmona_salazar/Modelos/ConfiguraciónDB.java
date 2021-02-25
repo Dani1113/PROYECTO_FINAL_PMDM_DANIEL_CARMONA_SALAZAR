@@ -6,7 +6,7 @@ public class ConfiguraciónDB {
     public static final String NOMBREDB = "tienda_videojuegos_android";
     //public static final String USUARIODB = "root";
     //public static final String CLAVEDB = "1234";
-    public static final String USUARIODB = "root";
+    public static final String USUARIODB = "damserver1";
     public static final String CLAVEDB = "dam1234";
     private static final String OPCIONES = "?useUnicode=true&useJDBCCompliantTimezoneShift=true&useLegacyDatetimeCode=false&serverTimezone=UTC";
     //public static final String PUERTOMYSQL = "3306";
