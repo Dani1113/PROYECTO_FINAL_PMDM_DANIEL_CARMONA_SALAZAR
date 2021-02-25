@@ -9,4 +9,4 @@
     android:textStyle="bold"
     android:gravity="center_vertical"
     android:padding="5dp"
-    android:text="item"/>
+    android:text="@string/item"/>

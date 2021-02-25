@@ -34,4 +34,5 @@
     <string name="informacion_en_detalle">INFORMACIÓN EN DETALLE</string>
     <string name="logodetalle">logoDetalle</string>
     <string name="id_imagen">idImagen</string>
+    <string name="item">item</string>
 </resources>
