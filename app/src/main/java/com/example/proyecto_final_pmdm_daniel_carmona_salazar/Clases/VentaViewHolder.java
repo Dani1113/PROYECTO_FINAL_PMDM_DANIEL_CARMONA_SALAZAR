@@ -31,7 +31,6 @@ public class VentaViewHolder extends RecyclerView.ViewHolder implements View.OnC
         super(itemView);
         txtNVenta = (TextView) itemView.findViewById(R.id.txtNVenta);
         txtVideojuego = (TextView) itemView.findViewById(R.id.txtVideojuego);
-        txtEmpleado = (TextView) itemView.findViewById(R.id.txtEmpleado);
         imgVideojuego = (ImageView) itemView.findViewById(R.id.imgVideojuego);
         this.listaVentasAdapter = listaVentasAdapter;
         itemView.setOnClickListener(this);

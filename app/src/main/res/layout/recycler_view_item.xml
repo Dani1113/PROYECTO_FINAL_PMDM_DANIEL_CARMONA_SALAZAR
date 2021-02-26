@@ -14,13 +14,13 @@
         <ImageView
             android:id="@+id/imgVideojuego"
             android:layout_width="0dp"
-            android:layout_height="138dp"
+            android:layout_height="match_parent"
             android:layout_weight="1"
             android:contentDescription="@string/imgrv"
             app:srcCompat="@drawable/img_no_disponible" />
 
         <LinearLayout
-            android:layout_width="272dp"
+            android:layout_width="274dp"
             android:layout_height="wrap_content"
             android:orientation="vertical"
             android:padding="10dp">
@@ -41,22 +41,13 @@
             <TextView
                 android:id="@+id/txtVideojuego"
                 android:layout_width="match_parent"
-                android:layout_height="wrap_content"
+                android:layout_height="87dp"
                 android:padding="10dp"
                 android:text="@string/videojuego2"
                 android:textColor="@color/white"
                 android:textSize="18sp"
                 android:textStyle="bold" />
 
-            <TextView
-                android:id="@+id/txtEmpleado"
-                android:layout_width="match_parent"
-                android:layout_height="wrap_content"
-                android:padding="10dp"
-                android:text="@string/empleado2"
-                android:textColor="@color/white"
-                android:textSize="18sp"
-                android:textStyle="bold" />
         </LinearLayout>
     </LinearLayout>
 

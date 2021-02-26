@@ -71,18 +71,11 @@ public class ListaVentasAdapter extends RecyclerView.Adapter<VentaViewHolder> {
 
         holder.txtNVenta.setText(String.valueOf("Nº de venta: " + vActual.getNúmeroVenta()));
 
-        String videojuego = "Videojuego: " + vActual.getVideojuego().getTítuloVideojuego();
-        if(videojuego.length() > 35){
-            holder.txtVideojuego.setText(videojuego.substring(0, 30) + "...");
-        }else{
+        String videojuego = "Título del videojuego: " + vActual.getVideojuego().getTítuloVideojuego();
+        if(videojuego.length() > 75){
+            holder.txtVideojuego.setText(videojuego.substring(0, 74) + "...");
+        }else {
             holder.txtVideojuego.setText(videojuego);
-        }
-
-        String empleado = "Empleado: " + vActual.getEmpleado().getNombreEmpleado();
-        if(empleado.length() > 35){
-            holder.txtEmpleado.setText(empleado.substring(0, 30) + "...");
-        }else{
-            holder.txtEmpleado.setText(empleado);
         }
     }
 
