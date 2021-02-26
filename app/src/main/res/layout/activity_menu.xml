@@ -11,9 +11,9 @@
         android:id="@+id/btNuevaVenta"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="50dp"
-        android:text="@string/nueva_venta"
+        android:layout_marginTop="28dp"
         android:onClick="insertarVenta"
+        android:text="@string/nueva_venta"
         app:layout_constraintEnd_toEndOf="@+id/imageView2"
         app:layout_constraintStart_toStartOf="@+id/imageView2"
         app:layout_constraintTop_toBottomOf="@+id/imageView2" />
@@ -22,11 +22,11 @@
         android:id="@+id/btBorrarVenta"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="72dp"
+        android:layout_marginTop="40dp"
         android:onClick="borrarVenta"
         android:text="@string/borrar_venta"
         app:layout_constraintEnd_toEndOf="@+id/btNuevaVenta"
-        app:layout_constraintHorizontal_bias="0.6"
+        app:layout_constraintHorizontal_bias="0.0"
         app:layout_constraintStart_toStartOf="@+id/btNuevaVenta"
         app:layout_constraintTop_toBottomOf="@+id/btNuevaVenta" />
 
@@ -34,10 +34,11 @@
         android:id="@+id/btActualizarVenta"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="72dp"
+        android:layout_marginTop="36dp"
         android:onClick="actualizarVenta"
         android:text="@string/actualizar_venta"
         app:layout_constraintEnd_toEndOf="@+id/btBorrarVenta"
+        app:layout_constraintHorizontal_bias="0.588"
         app:layout_constraintStart_toStartOf="@+id/btBorrarVenta"
         app:layout_constraintTop_toBottomOf="@+id/btBorrarVenta" />
 
@@ -45,11 +46,11 @@
         android:id="@+id/btMostrarInformacion"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="72dp"
+        android:layout_marginTop="40dp"
         android:onClick="mostrarInformación"
         android:text="@string/mostrar_informacion"
         app:layout_constraintEnd_toEndOf="@+id/btActualizarVenta"
-        app:layout_constraintHorizontal_bias="0.513"
+        app:layout_constraintHorizontal_bias="0.351"
         app:layout_constraintStart_toStartOf="@+id/btActualizarVenta"
         app:layout_constraintTop_toBottomOf="@+id/btActualizarVenta" />
 
@@ -57,7 +58,7 @@
         android:id="@+id/imageView2"
         android:layout_width="175dp"
         android:layout_height="175dp"
-        android:layout_marginTop="28dp"
+        android:layout_marginTop="16dp"
         android:contentDescription="@string/pokeball"
         android:src="@drawable/pokeball"
         app:layout_constraintEnd_toEndOf="parent"
