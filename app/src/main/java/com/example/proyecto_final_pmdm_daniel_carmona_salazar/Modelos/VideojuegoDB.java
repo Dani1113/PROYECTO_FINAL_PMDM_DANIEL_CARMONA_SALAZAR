@@ -44,7 +44,7 @@ public class VideojuegoDB {
         }
     }
 
-    public static Videojuego buscarVideojuego(String nombreV) {
+    public static Videojuego buscarVideojuego(String títuloV) {
         Connection conexión = BaseDB.conectarConBaseDeDatos();
         if (conexión == null) {
             Log.i("SQL", "Error al establecer la conexión con la base de datos 'videojuego'");
@@ -52,7 +52,7 @@ public class VideojuegoDB {
         }
         Videojuego videojuegoEncontrado = null;
         try {
-            ResultSet resultadoSQL = BaseDB.buscarFilas(conexión, "videojuego", "título_videojuego", nombreV);
+            ResultSet resultadoSQL = BaseDB.buscarFilas(conexión, "videojuego", "título_videojuego", títuloV);
             if (resultadoSQL == null) {
                 return null;
             }

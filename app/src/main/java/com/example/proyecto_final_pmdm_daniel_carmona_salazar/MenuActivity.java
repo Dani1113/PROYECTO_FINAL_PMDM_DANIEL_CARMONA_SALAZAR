@@ -30,7 +30,12 @@ public class MenuActivity extends AppCompatActivity {
     }
 
     public void mostrarInformación(View view) {
-        Intent intent = new Intent(this, MostrarInfoActivity.class);
+        Intent intent = new Intent(this, MostrarInfoVentaActivity.class);
+        startActivity(intent);
+    }
+
+    public void buscarInformación(View view) {
+        Intent intent = new Intent(this, BuscarInfoActivity.class);
         startActivity(intent);
     }
 }

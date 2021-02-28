@@ -70,8 +70,8 @@
 
     <ImageView
         android:id="@+id/imageView"
-        android:layout_width="260dp"
-        android:layout_height="328dp"
+        android:layout_width="244dp"
+        android:layout_height="260dp"
         android:layout_marginTop="16dp"
         android:contentDescription="@string/foto_inicio"
         app:layout_constraintEnd_toEndOf="@+id/textView3"

@@ -1,15 +1,22 @@
-package com.example.proyecto_final_pmdm_daniel_carmona_salazar.Clases;
+package com.example.proyecto_final_pmdm_daniel_carmona_salazar.Clases.VentaRecyclerView;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.view.View;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.AlertDialog;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.example.proyecto_final_pmdm_daniel_carmona_salazar.MostrarInfoDetalleActivity;
+import com.example.proyecto_final_pmdm_daniel_carmona_salazar.Clases.Empleado;
+import com.example.proyecto_final_pmdm_daniel_carmona_salazar.Clases.Venta;
+import com.example.proyecto_final_pmdm_daniel_carmona_salazar.Clases.Videojuego;
+import com.example.proyecto_final_pmdm_daniel_carmona_salazar.Controladores.VentaController;
+import com.example.proyecto_final_pmdm_daniel_carmona_salazar.MostrarInfoDetalleVentaActivity;
 import com.example.proyecto_final_pmdm_daniel_carmona_salazar.R;
 
 import java.io.ByteArrayOutputStream;
@@ -19,12 +26,11 @@ import static com.example.proyecto_final_pmdm_daniel_carmona_salazar.ActualizarV
 import static com.example.proyecto_final_pmdm_daniel_carmona_salazar.ActualizarVentaActivity1.EXTRA_OBJETO_VENTA_SIN_VIDEOJUEGO_NI_EMPLEADO;
 import static com.example.proyecto_final_pmdm_daniel_carmona_salazar.ActualizarVentaActivity1.EXTRA_OBJETO_VIDEOJUEGO_SIN_IMAGEN;
 
-public class VentaViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener {
+public class VentaViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener,  View.OnLongClickListener{
 
     public ListaVentasAdapter listaVentasAdapter;
     public TextView txtNVenta = null;
     public TextView txtVideojuego = null;
-    public TextView txtEmpleado = null;
     public ImageView imgVideojuego = null;
 
     public VentaViewHolder(@NonNull View itemView, ListaVentasAdapter listaVentasAdapter) {
@@ -34,6 +40,7 @@ public class VentaViewHolder extends RecyclerView.ViewHolder implements View.OnC
         imgVideojuego = (ImageView) itemView.findViewById(R.id.imgVideojuego);
         this.listaVentasAdapter = listaVentasAdapter;
         itemView.setOnClickListener(this);
+        itemView.setOnLongClickListener(this);
     }
 
     @Override
@@ -41,7 +48,7 @@ public class VentaViewHolder extends RecyclerView.ViewHolder implements View.OnC
         int posición = getLayoutPosition();
         Venta vSeleccionada = this.listaVentasAdapter.getListaVentas().get(posición);
         listaVentasAdapter.notifyDataSetChanged();
-        Intent intent = new Intent(listaVentasAdapter.getContexto(), MostrarInfoDetalleActivity.class);
+        Intent intent = new Intent(listaVentasAdapter.getContexto(), MostrarInfoDetalleVentaActivity.class);
 
         //Empleado
         String nombreEmpleado = vSeleccionada.getEmpleado().getNombreEmpleado();
@@ -71,5 +78,32 @@ public class VentaViewHolder extends RecyclerView.ViewHolder implements View.OnC
         intent.putExtra(EXTRA_OBJETO_VENTA_SIN_VIDEOJUEGO_NI_EMPLEADO, venta);
 
         listaVentasAdapter.getContexto().startActivity(intent);
+    }
+
+    @Override
+    public boolean onLongClick(View v) {
+        int posición = getLayoutPosition();
+        Venta vSeleccionada = this.listaVentasAdapter.getListaVentas().get(posición);
+        AlertDialog.Builder alertaBorrar = new AlertDialog.Builder(v.getContext());
+        alertaBorrar.setTitle("¿Desea borrar la venta que ha seleccionado?");
+        alertaBorrar.setPositiveButton("SI", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                boolean borradoOK = VentaController.borrarVenta(vSeleccionada);
+                if(borradoOK) {
+                    Toast.makeText(v.getContext(), "Venta borrada correctamente, pulsa refrescar", Toast.LENGTH_SHORT).show();
+                } else{
+                    Toast.makeText(v.getContext(), "Error al borrar la venta", Toast.LENGTH_SHORT).show();
+                }
+            }
+        });
+        alertaBorrar.setNegativeButton("NO", new DialogInterface.OnClickListener() {
+            @Override
+            public void onClick(DialogInterface dialog, int which) {
+                Toast.makeText(v.getContext(), "Borrado de la venta cancelado", Toast.LENGTH_SHORT).show();
+            }
+        });
+        alertaBorrar.show();
+        return false;
     }
 }

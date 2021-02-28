@@ -11,9 +11,12 @@ import com.example.proyecto_final_pmdm_daniel_carmona_salazar.Clases.Empleado;
 import com.example.proyecto_final_pmdm_daniel_carmona_salazar.Clases.Venta;
 import com.example.proyecto_final_pmdm_daniel_carmona_salazar.Clases.Videojuego;
 
+import static com.example.proyecto_final_pmdm_daniel_carmona_salazar.ActualizarVentaActivity1.EXTRA_IMAGEN_VIDEOJUEGO;
+import static com.example.proyecto_final_pmdm_daniel_carmona_salazar.ActualizarVentaActivity1.EXTRA_OBJETO_VENTA_SIN_VIDEOJUEGO_NI_EMPLEADO;
+import static com.example.proyecto_final_pmdm_daniel_carmona_salazar.ActualizarVentaActivity1.EXTRA_OBJETO_VIDEOJUEGO_SIN_IMAGEN;
 import static com.example.proyecto_final_pmdm_daniel_carmona_salazar.Utilidades.Utilidades.bytesABitmap;
 
-public class MostrarInfoDetalleActivity extends AppCompatActivity {
+public class MostrarInfoDetalleVentaActivity extends AppCompatActivity {
 
     private Empleado empleado = null;
     private Videojuego videojuego = null;
@@ -32,7 +35,7 @@ public class MostrarInfoDetalleActivity extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_mostrar_info_detalle);
+        setContentView(R.layout.activity_mostrar_info_venta_detalle);
         txtNVentaDetalle = (TextView) findViewById(R.id.txtNVentaDetalle);
         txtTítuloDetalle = (TextView) findViewById(R.id.txtTítuloDetalle);
         txtPEGIDetalle = (TextView) findViewById(R.id.txtPEGIDetalle);
@@ -45,17 +48,17 @@ public class MostrarInfoDetalleActivity extends AppCompatActivity {
 
         Intent intent = getIntent();
         if(intent != null){
-            venta = (Venta) intent.getSerializableExtra(ActualizarVentaActivity1.EXTRA_OBJETO_VENTA_SIN_VIDEOJUEGO_NI_EMPLEADO);
+            venta = (Venta) intent.getSerializableExtra(EXTRA_OBJETO_VENTA_SIN_VIDEOJUEGO_NI_EMPLEADO);
             if(venta != null){
                 txtNVentaDetalle.setText(String.valueOf(venta.getNúmeroVenta()));
             }
 
-            logoDetalle = intent.getByteArrayExtra(ActualizarVentaActivity1.EXTRA_IMAGEN_VIDEOJUEGO);
+            logoDetalle = intent.getByteArrayExtra(EXTRA_IMAGEN_VIDEOJUEGO);
             if(logoDetalle != null){
                 imgLogoDetalle.setImageBitmap(bytesABitmap(logoDetalle));
             }
 
-            videojuego = (Videojuego) intent.getSerializableExtra(ActualizarVentaActivity1.EXTRA_OBJETO_VIDEOJUEGO_SIN_IMAGEN);
+            videojuego = (Videojuego) intent.getSerializableExtra(EXTRA_OBJETO_VIDEOJUEGO_SIN_IMAGEN);
             if(videojuego != null){
                 String titulo = videojuego.getTítuloVideojuego();
                 if (titulo.length() > 15){

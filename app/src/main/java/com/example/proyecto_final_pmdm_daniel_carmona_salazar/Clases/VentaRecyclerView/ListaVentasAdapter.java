@@ -1,4 +1,4 @@
-package com.example.proyecto_final_pmdm_daniel_carmona_salazar.Clases;
+package com.example.proyecto_final_pmdm_daniel_carmona_salazar.Clases.VentaRecyclerView;
 
 import android.content.Context;
 import android.graphics.Bitmap;
@@ -9,12 +9,12 @@ import android.view.ViewGroup;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.example.proyecto_final_pmdm_daniel_carmona_salazar.Clases.Venta;
 import com.example.proyecto_final_pmdm_daniel_carmona_salazar.R;
 
 import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 
-import static com.example.proyecto_final_pmdm_daniel_carmona_salazar.ActualizarVentaActivity1.EXTRA_IMAGEN_VIDEOJUEGO;
 import static com.example.proyecto_final_pmdm_daniel_carmona_salazar.Utilidades.Utilidades.bytesABitmap;
 
 public class ListaVentasAdapter extends RecyclerView.Adapter<VentaViewHolder> {
@@ -51,7 +51,7 @@ public class ListaVentasAdapter extends RecyclerView.Adapter<VentaViewHolder> {
     @NonNull
     @Override
     public VentaViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        View itemView = inflater.inflate(R.layout.recycler_view_item, parent, false);
+        View itemView = inflater.inflate(R.layout.recycler_view_venta_item, parent, false);
         return new VentaViewHolder(itemView, this);
     }
 
@@ -71,11 +71,11 @@ public class ListaVentasAdapter extends RecyclerView.Adapter<VentaViewHolder> {
 
         holder.txtNVenta.setText(String.valueOf("Nº de venta: " + vActual.getNúmeroVenta()));
 
-        String videojuego = "Título del videojuego: " + vActual.getVideojuego().getTítuloVideojuego();
-        if(videojuego.length() > 75){
-            holder.txtVideojuego.setText(videojuego.substring(0, 74) + "...");
+        String títuloVideojuego = "Título del videojuego: " + vActual.getVideojuego().getTítuloVideojuego();
+        if(títuloVideojuego.length() > 75){
+            holder.txtVideojuego.setText(títuloVideojuego.substring(0, 74) + "...");
         }else {
-            holder.txtVideojuego.setText(videojuego);
+            holder.txtVideojuego.setText(títuloVideojuego);
         }
     }
 
