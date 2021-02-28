@@ -56,7 +56,7 @@ public class ListaEmpleadosAdapter extends RecyclerView.Adapter<EmpleadosViewHol
 
         holder.txtNombreEmpleado.setText("Nombre del empleado: " + eActual.getNombreEmpleado());
 
-        String apellidosEmpleado = "Apellidos del empleado: " + eActual.getApellidosEmpleado();
+        String apellidosEmpleado = "\nApellidos del empleado: " + eActual.getApellidosEmpleado();
         if (apellidosEmpleado.length() > 115) {
             holder.txtApellidosEmpleado.setText(apellidosEmpleado.substring(0, 114) + "...");
         }else {

@@ -41,13 +41,13 @@ public class EmpleadoDB {
         }
     }
 
-    public static Empleado buscarEmpleado(String nombreE) {
+    public static ArrayList<Empleado> buscarEmpleado(String nombreE) {
         Connection conexión = BaseDB.conectarConBaseDeDatos();
         if (conexión == null) {
             Log.i("SQL", "Error al establecer la conexión con la base de datos 'empleado'");
             return null;
         }
-        Empleado empleadoEncontrado = null;
+        ArrayList<Empleado> empleadosEncontrados = null;
         try {
             ResultSet resultadoSQL = BaseDB.buscarFilas(conexión, "empleado", "nombre_empleado", nombreE);
             if (resultadoSQL == null) {
@@ -59,11 +59,12 @@ public class EmpleadoDB {
                 String apellidosEmpleado = resultadoSQL.getString("apellidos_empleado");
                 String domicilioEmpleado = resultadoSQL.getString("domicilio_empleado");
                 String telefonoEmpleado = resultadoSQL.getString("telefono_empleado");
-                empleadoEncontrado = new Empleado(idEmpleado, nombreEmpleado, apellidosEmpleado, domicilioEmpleado, telefonoEmpleado);
+                Empleado e = new Empleado(idEmpleado, nombreEmpleado, apellidosEmpleado, domicilioEmpleado, telefonoEmpleado);
+                empleadosEncontrados.add(e);
             }
             resultadoSQL.close();
             conexión.close();
-            return empleadoEncontrado;
+            return empleadosEncontrados;
         } catch (SQLException e) {
             Log.i("SQL", "Error al mostrar los empleados de la base de datos");
             return null;

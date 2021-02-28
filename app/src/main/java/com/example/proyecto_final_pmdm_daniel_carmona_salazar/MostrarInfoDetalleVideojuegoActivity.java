@@ -19,8 +19,8 @@ public class MostrarInfoDetalleVideojuegoActivity extends AppCompatActivity {
     private TextView txtTítuloVideojuegoDetalle = null;
     private TextView txtPEGIVideojuegoDetalle = null;
     private TextView txtGéneroVideojuegoDetalle = null;
-    private byte[] arrayLogoVideojuegoDetalle = null;
-    private ImageView imgLogoVideojuegoDetalle = null;
+    private ImageView imgVideojuegoDetalle = null;
+    private byte[] arrayImgVideojuegoDetalle = null;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -29,23 +29,25 @@ public class MostrarInfoDetalleVideojuegoActivity extends AppCompatActivity {
         txtTítuloVideojuegoDetalle = (TextView) findViewById(R.id.txtTítuloVideojuegoDetalle);
         txtPEGIVideojuegoDetalle = (TextView) findViewById(R.id.txtPEGIVideojuegoDetalle);
         txtGéneroVideojuegoDetalle = (TextView) findViewById(R.id.txtGéneroVideojuegoDetalle);
-        imgLogoVideojuegoDetalle = (ImageView) findViewById(R.id.imgVideojuegoDetalle);
+        imgVideojuegoDetalle = (ImageView) findViewById(R.id.imgVideojuegoDetalle);
 
         Intent intent = getIntent();
         if(intent != null){
             videojuego = (Videojuego) intent.getSerializableExtra(EXTRA_OBJETO_VIDEOJUEGO_SIN_IMAGEN);
             if(videojuego != null){
-                String título = videojuego.getTítuloVideojuego();
-                if (título.length() > 35){
-                    txtTítuloVideojuegoDetalle.setText(título.substring(0, 34) + "...");
+                String título = String.valueOf(videojuego.getTítuloVideojuego());
+                if (título.length() > 50) {
+                    txtTítuloVideojuegoDetalle.setText(título.substring(0, 49) + "...");
+                }else {
+                    txtTítuloVideojuegoDetalle.setText(título);
                 }
                 txtPEGIVideojuegoDetalle.setText(String.valueOf(videojuego.getPegiVideojuego()));
                 txtGéneroVideojuegoDetalle.setText(videojuego.getGéneroVideojuego());
             }
 
-            arrayLogoVideojuegoDetalle = intent.getByteArrayExtra(EXTRA_IMAGEN_VIDEOJUEGO);
-            if(arrayLogoVideojuegoDetalle != null){
-                imgLogoVideojuegoDetalle.setImageBitmap(bytesABitmap(arrayLogoVideojuegoDetalle));
+            arrayImgVideojuegoDetalle = intent.getByteArrayExtra(EXTRA_IMAGEN_VIDEOJUEGO);
+            if(arrayImgVideojuegoDetalle != null){
+                imgVideojuegoDetalle.setImageBitmap(bytesABitmap(arrayImgVideojuegoDetalle));
             }
         }
     }

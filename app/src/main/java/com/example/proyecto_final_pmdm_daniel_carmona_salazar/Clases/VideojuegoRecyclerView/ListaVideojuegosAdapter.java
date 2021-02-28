@@ -59,17 +59,7 @@ public class ListaVideojuegosAdapter extends RecyclerView.Adapter<VideojuegosVie
     public void onBindViewHolder(@NonNull VideojuegosViewHolder holder, int position) {
         Videojuego vActual = listaVideojuegos.get(position);
 
-        Bitmap logo = vActual.getLogoVideojuego();
-        if(logo != null){
-            ByteArrayOutputStream baos = new ByteArrayOutputStream();
-            logo.compress(Bitmap.CompressFormat.PNG, 0, baos);
-            byte[] byteArrayLogo = baos.toByteArray();
-            if(byteArrayLogo != null){
-                holder.imgVideojuego2.setImageBitmap(bytesABitmap(byteArrayLogo));
-            }
-        }
-
-        String títuloVideojuego = String.valueOf("Título del videojuego: " + vActual.getTítuloVideojuego());
+        String títuloVideojuego = String.valueOf("Título del videojuego: " + vActual.getTítuloVideojuego() + "\n");
         if(títuloVideojuego.length() > 175){
             holder.txtTítuloVideojuego.setText(títuloVideojuego.substring(0, 174) + "...");
         }else {

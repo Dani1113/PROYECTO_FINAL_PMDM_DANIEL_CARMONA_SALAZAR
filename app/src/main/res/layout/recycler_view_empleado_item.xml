@@ -1,39 +1,42 @@
 <?xml version="1.0" encoding="utf-8"?>
 <androidx.cardview.widget.CardView xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:background="@drawable/fondo">
+    app:cardBackgroundColor="@android:color/transparent">
 
     <LinearLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent"
+        android:layout_width="171dp"
+        android:layout_height="279dp"
         android:orientation="vertical"
         android:padding="10dp">
 
         <TextView
             android:id="@+id/txtNombreEmpleado"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="81dp"
+            android:gravity="center"
             android:paddingStart="15dp"
             android:paddingLeft="15dp"
+            android:paddingEnd="0dp"
             android:paddingRight="0dp"
             android:text="@string/nombre_del_empleado"
             android:textColor="@color/white"
             android:textSize="22sp"
-            android:textStyle="bold"
-            android:paddingEnd="0dp" />
+            android:textStyle="bold" />
 
         <TextView
             android:id="@+id/txtApellidosEmpleado"
             android:layout_width="match_parent"
-            android:layout_height="40dp"
+            android:layout_height="170dp"
+            android:gravity="center"
             android:paddingStart="15dp"
             android:paddingLeft="15dp"
+            android:paddingEnd="0dp"
             android:paddingRight="0dp"
             android:text="@string/apellidos_del_empleado"
             android:textColor="@color/white"
             android:textSize="22sp"
-            android:textStyle="bold"
-            android:paddingEnd="0dp" />
+            android:textStyle="bold" />
     </LinearLayout>
 </androidx.cardview.widget.CardView>

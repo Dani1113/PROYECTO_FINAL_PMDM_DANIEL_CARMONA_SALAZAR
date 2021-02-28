@@ -51,4 +51,7 @@
     <string name="telefono_empleado">Teléfono empleado:</string>
     <string name="domicilio_empleado">Domicilio empleado:</string>
     <string name="apellidos_empleado">Apellidos empleado:</string>
+    <string name="empleados">EMPLEADOS</string>
+    <string name="videojuegos">VIDEOJUEGOS</string>
+    <string name="siguiente">SIGUIENTE</string>
 </resources>

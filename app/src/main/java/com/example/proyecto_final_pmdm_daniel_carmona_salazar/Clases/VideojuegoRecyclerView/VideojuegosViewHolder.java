@@ -22,12 +22,10 @@ public class VideojuegosViewHolder extends RecyclerView.ViewHolder implements Vi
 
     public ListaVideojuegosAdapter listaVideojuegosAdapter;
     public TextView txtTítuloVideojuego = null;
-    public ImageView imgVideojuego2 = null;
 
     public VideojuegosViewHolder(@NonNull View itemView, ListaVideojuegosAdapter listaVideojuegosAdapter) {
         super(itemView);
         txtTítuloVideojuego = (TextView) itemView.findViewById(R.id.txtTítuloVideojuego);
-        imgVideojuego2 = (ImageView) itemView.findViewById(R.id.imgVideojuego2);
         this.listaVideojuegosAdapter = listaVideojuegosAdapter;
         itemView.setOnClickListener(this);
     }

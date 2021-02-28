@@ -7,11 +7,31 @@
     android:background="@drawable/fondo"
     tools:context=".BuscarInfoActivity">
 
+    <EditText
+        android:id="@+id/edtBuscarNombreE"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:hint="@string/nombreE"
+        android:inputType="textPersonName"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView22" />
+
     <TextView
-        android:id="@+id/textView23"
+        android:id="@+id/textView22"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
+        android:layout_marginTop="64dp"
         android:text="@string/introduce_el_nombre_de_un_empleado"
         android:textColor="@color/white"
         android:textSize="24sp"
@@ -20,8 +40,41 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/edtBuscarTítuloV" />
 
+    <EditText
+        android:id="@+id/edtBuscarTítuloV"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginTop="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:autofillHints=""
+        android:ems="10"
+        android:hint="@string/titulo"
+        android:inputType="textPersonName"
+        android:textColor="@color/white"
+        android:textColorHint="@color/white"
+        android:textSize="20sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView29" />
+
     <TextView
-        android:id="@+id/textView19"
+        android:id="@+id/textView29"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="36dp"
+        android:text="@string/introduce_el_tÍtulo_de_un_videojuego"
+        android:textColor="@color/white"
+        android:textSize="24sp"
+        android:textStyle="bold"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/textView20" />
+
+    <TextView
+        android:id="@+id/textView20"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
@@ -35,126 +88,21 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/button"
-        android:layout_width="124dp"
-        android:layout_height="49dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        android:text="@string/buscar"
-        android:textColor="@color/colorLetraBotones"
-        android:textSize="18sp"
-        app:backgroundTint="@color/fondoBotones"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView22" />
-
-    <Button
-        android:id="@+id/button2"
-        android:layout_width="122dp"
-        android:layout_height="49dp"
-        android:layout_marginTop="12dp"
-        android:layout_marginEnd="16dp"
-        android:layout_marginRight="16dp"
-        android:text="@string/buscar"
-        android:textColor="@color/colorLetraBotones"
-        android:textSize="18sp"
-        app:backgroundTint="@color/fondoBotones"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView23" />
-
-    <EditText
-        android:id="@+id/edtBuscarTítuloV"
-        android:layout_width="250dp"
-        android:layout_height="48dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="12dp"
-        android:autofillHints=""
-        android:ems="10"
-        android:hint="@string/titulo"
-        android:inputType="textPersonName"
-        android:textColorHint="@color/white"
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView22" />
-
-    <EditText
-        android:id="@+id/edtBuscarNombreE"
-        android:layout_width="254dp"
-        android:layout_height="49dp"
-        android:layout_marginStart="16dp"
-        android:layout_marginLeft="16dp"
-        android:layout_marginTop="12dp"
-        android:autofillHints=""
-        android:ems="10"
-        android:hint="@string/nombreE"
-        android:inputType="textPersonName"
-        android:textColorHint="@color/white"
-        android:textSize="20sp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView23" />
-
-    <TextView
-        android:id="@+id/textView22"
-        android:layout_width="wrap_content"
+        android:id="@+id/btSiguiente"
+        android:layout_width="0dp"
         android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:text="@string/introduce_el_tÍtulo_de_un_videojuego"
-        android:textColor="@color/white"
-        android:textSize="24sp"
-        android:textStyle="bold"
+        android:layout_marginStart="16dp"
+        android:layout_marginLeft="16dp"
+        android:layout_marginEnd="16dp"
+        android:layout_marginRight="16dp"
+        android:layout_marginBottom="272dp"
+        android:onClick="buscarInformaciónSiguiente"
+        android:text="@string/siguiente"
+        android:textColor="@color/colorLetraBotones"
+        android:textSize="26sp"
+        app:backgroundTint="@color/fondoBotones"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/textView19" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvVideojuegos"
-        android:layout_width="182dp"
-        android:layout_height="300dp"
-        android:layout_marginTop="12dp"
-        app:layout_constraintEnd_toEndOf="@+id/edtBuscarNombreE"
-        app:layout_constraintHorizontal_bias="0.069"
-        app:layout_constraintStart_toStartOf="@+id/edtBuscarNombreE"
-        app:layout_constraintTop_toBottomOf="@+id/edtBuscarNombreE" />
-
-    <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/rvEmpleados"
-        android:layout_width="182dp"
-        android:layout_height="300dp"
-        android:layout_marginTop="12dp"
-        app:layout_constraintEnd_toEndOf="@+id/button2"
         app:layout_constraintHorizontal_bias="1.0"
-        app:layout_constraintStart_toStartOf="@+id/button2"
-        app:layout_constraintTop_toBottomOf="@+id/button2" />
-
-    <Button
-        android:id="@+id/btRefrecarRVVideojuegos"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:text="@string/refrescar"
-        android:textColor="@color/colorLetraBotones"
-        android:textSize="18sp"
-        android:onClick="refrescarRecyclerViewVideojuegos"
-        app:backgroundTint="@color/fondoBotones"
-        app:layout_constraintEnd_toEndOf="@+id/rvVideojuegos"
-        app:layout_constraintHorizontal_bias="0.494"
-        app:layout_constraintStart_toStartOf="@+id/rvVideojuegos"
-        app:layout_constraintTop_toBottomOf="@+id/rvVideojuegos" />
-
-    <Button
-        android:id="@+id/btRefrescarRVEmpleados"
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="12dp"
-        android:onClick="refrescarRecyclerViewEmpleados"
-        android:text="@string/refrescar"
-        android:textColor="@color/colorLetraBotones"
-        android:textSize="18sp"
-        app:backgroundTint="@color/fondoBotones"
-        app:layout_constraintEnd_toEndOf="@+id/rvEmpleados"
-        app:layout_constraintHorizontal_bias="0.55"
-        app:layout_constraintStart_toStartOf="@+id/rvEmpleados"
-        app:layout_constraintTop_toBottomOf="@+id/rvEmpleados" />
-
+        app:layout_constraintStart_toStartOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>

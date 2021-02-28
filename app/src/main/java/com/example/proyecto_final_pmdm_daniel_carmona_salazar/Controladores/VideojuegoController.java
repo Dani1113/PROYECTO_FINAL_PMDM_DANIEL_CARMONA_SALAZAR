@@ -37,13 +37,13 @@ public class VideojuegoController {
         return videojuegosDevueltos;
     }
 
-    public static Videojuego buscarVideojuego(String nombreV){
-        Videojuego videojuego = null;
+    public static ArrayList<Videojuego> buscarVideojuego(String nombreV){
+        ArrayList<Videojuego> videojuegosEncontrados = null;
         FutureTask tarea = new FutureTask(new TareaBuscarVideojuego(nombreV));
         ExecutorService es = Executors.newSingleThreadExecutor();
         es.submit(tarea);
         try {
-            videojuego = (Videojuego) tarea.get();
+            videojuegosEncontrados = (ArrayList<Videojuego>) tarea.get();
             es.shutdown();
             try {
                 if (!es.awaitTermination(800, TimeUnit.MILLISECONDS)) {
@@ -57,6 +57,6 @@ public class VideojuegoController {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        return videojuego;
+        return videojuegosEncontrados;
     }
 }

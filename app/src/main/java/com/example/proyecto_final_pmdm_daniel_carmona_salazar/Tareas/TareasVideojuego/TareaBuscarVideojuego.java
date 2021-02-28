@@ -3,9 +3,10 @@ package com.example.proyecto_final_pmdm_daniel_carmona_salazar.Tareas.TareasVide
 import com.example.proyecto_final_pmdm_daniel_carmona_salazar.Clases.Videojuego;
 import com.example.proyecto_final_pmdm_daniel_carmona_salazar.Modelos.VideojuegoDB;
 
+import java.util.ArrayList;
 import java.util.concurrent.Callable;
 
-public class TareaBuscarVideojuego implements Callable<Videojuego> {
+public class TareaBuscarVideojuego implements Callable<ArrayList<Videojuego>> {
     private String nombreV = null;
 
     public TareaBuscarVideojuego(String nombreV){
@@ -13,8 +14,8 @@ public class TareaBuscarVideojuego implements Callable<Videojuego> {
     }
 
     @Override
-    public Videojuego call() throws Exception {
-        Videojuego v = VideojuegoDB.buscarVideojuego(nombreV);
-        return v;
+    public ArrayList<Videojuego> call() throws Exception {
+        ArrayList<Videojuego> videojuegosEncontrados = VideojuegoDB.buscarVideojuego(nombreV);
+        return videojuegosEncontrados;
     }
 }

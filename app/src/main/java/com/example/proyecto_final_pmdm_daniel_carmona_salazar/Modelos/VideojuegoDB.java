@@ -44,13 +44,13 @@ public class VideojuegoDB {
         }
     }
 
-    public static Videojuego buscarVideojuego(String títuloV) {
+    public static ArrayList<Videojuego> buscarVideojuego(String títuloV) {
         Connection conexión = BaseDB.conectarConBaseDeDatos();
         if (conexión == null) {
             Log.i("SQL", "Error al establecer la conexión con la base de datos 'videojuego'");
             return null;
         }
-        Videojuego videojuegoEncontrado = null;
+        ArrayList<Videojuego> videojuegosEncontrados = null;
         try {
             ResultSet resultadoSQL = BaseDB.buscarFilas(conexión, "videojuego", "título_videojuego", títuloV);
             if (resultadoSQL == null) {
@@ -62,11 +62,12 @@ public class VideojuegoDB {
                 int pegiVideojuego = resultadoSQL.getInt("pegi_videojuego");
                 String géneroVideojuego = resultadoSQL.getString("genero_videojuego");
                 Blob logoVideojuego = resultadoSQL.getBlob("logo_videojuego");
-                videojuegoEncontrado = new Videojuego(idVideojuego, títuloVideojuego, pegiVideojuego, géneroVideojuego, blobABitmap(logoVideojuego, ConfiguraciónImágenesDB.ANCHO_FOTO, ConfiguraciónImágenesDB.ALTO_FOTO));
+                Videojuego videojuegoEncontrado = new Videojuego(idVideojuego, títuloVideojuego, pegiVideojuego, géneroVideojuego, blobABitmap(logoVideojuego, ConfiguraciónImágenesDB.ANCHO_FOTO, ConfiguraciónImágenesDB.ALTO_FOTO));
+                videojuegosEncontrados.add(videojuegoEncontrado);
             }
             resultadoSQL.close();
             conexión.close();
-            return videojuegoEncontrado;
+            return videojuegosEncontrados;
         } catch (SQLException e) {
             Log.i("SQL", "Error al mostrar los videojuegos de la base de datos");
             return null;

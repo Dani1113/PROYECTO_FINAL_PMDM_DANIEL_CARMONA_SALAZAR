@@ -35,13 +35,13 @@ public class EmpleadoController {
         return empleadosDevueltas;
     }
 
-    public static Empleado buscarEmpleado(String nombreE){
-        Empleado empleado = null;
+    public static ArrayList<Empleado> buscarEmpleado(String nombreE){
+        ArrayList<Empleado> empleadosEncontrados = null;
         FutureTask tarea = new FutureTask(new TareaBuscarEmpleado(nombreE));
         ExecutorService es = Executors.newSingleThreadExecutor();
         es.submit(tarea);
         try {
-            empleado = (Empleado) tarea.get();
+            empleadosEncontrados = (ArrayList<Empleado>) tarea.get();
             es.shutdown();
             try {
                 if (!es.awaitTermination(800, TimeUnit.MILLISECONDS)) {
@@ -55,6 +55,6 @@ public class EmpleadoController {
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
-        return empleado;
+        return empleadosEncontrados;
     }
 }
