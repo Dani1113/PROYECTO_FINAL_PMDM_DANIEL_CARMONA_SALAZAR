@@ -7,9 +7,16 @@ import java.util.ArrayList;
 import java.util.concurrent.Callable;
 
 public class TareaObtenerVideojuego implements Callable<ArrayList<Videojuego>> {
+    private ArrayList<Videojuego> videojuegosDevueltos = null;
+    private int página;
+
+    public TareaObtenerVideojuego(int página){
+        this.página = página;
+    }
+
     @Override
     public ArrayList<Videojuego> call() throws Exception {
-        ArrayList<Videojuego> videojuegosDevueltos = VideojuegoDB.obtenerVideojuego();
+        videojuegosDevueltos = VideojuegoDB.obtenerVideojuego(página);
         return videojuegosDevueltos;
     }
 }

@@ -11,7 +11,7 @@ import java.sql.Statement;
 import java.util.ArrayList;
 
 public class EmpleadoDB {
-    public static ArrayList<Empleado> obtenerEmpleado(){
+    public static ArrayList<Empleado> obtenerEmpleado(int página){
         Connection conexión = BaseDB.conectarConBaseDeDatos();
         if(conexión == null) {
             Log.i("SQL", "Error al establecer la conexión con la base de datos 'empleado'");
@@ -20,7 +20,8 @@ public class EmpleadoDB {
         ArrayList<Empleado> empleadosDevueltos = new ArrayList<Empleado>();
         try {
             Statement sentencia = conexión.createStatement();
-            String ordenSQL = "SELECT * FROM empleado";
+            int desplazamiento = página * ConfiguracionesGeneralesDB.ELEMENTOS_POR_PAGINA;
+            String ordenSQL = "SELECT * FROM empleado LIMIT" + desplazamiento + ", " + ConfiguracionesGeneralesDB.ELEMENTOS_POR_PAGINA;
             ResultSet resultado = sentencia.executeQuery(ordenSQL);
             while(resultado.next()) {
                 int idEmpleado = resultado.getInt("id_empleado");
@@ -68,6 +69,30 @@ public class EmpleadoDB {
         } catch (SQLException e) {
             Log.i("SQL", "Error al mostrar los empleados de la base de datos");
             return null;
+        }
+    }
+
+    public static int obtenerCantidadEmplados() {
+        Connection conexión = BaseDB.conectarConBaseDeDatos();
+        if (conexión == null) {
+            Log.i("SQL", "Error al establecer la conexión con la base de datos 'empleado'");
+            return 0;
+        }
+        int cantidadEmpleados = 0;
+        try {
+            Statement sentencia = conexión.createStatement();
+            String ordenSQL = "SELECT count(*) as cantidad FROM empleado";
+            ResultSet resultado  = sentencia.executeQuery(ordenSQL);
+            while (resultado.next()) {
+                cantidadEmpleados = resultado.getInt("cantidad");
+            }
+            resultado.close();
+            sentencia.close();
+            conexión.close();
+            return cantidadEmpleados;
+        } catch (SQLException e) {
+            Log.i("SQL", "Error al devolver el número de empleados de la base de datos");
+            return 0;
         }
     }
 }

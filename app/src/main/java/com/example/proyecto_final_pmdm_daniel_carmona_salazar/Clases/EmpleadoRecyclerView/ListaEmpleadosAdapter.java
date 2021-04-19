@@ -18,12 +18,14 @@ public class ListaEmpleadosAdapter extends RecyclerView.Adapter<EmpleadosViewHol
     private LayoutInflater inflater;
     private ArrayList<Empleado> listaEmpleados;
     private Context contexto;
+    private int página;
 
     //CONSTRUCTORES
     public ListaEmpleadosAdapter(Context contexto, ArrayList<Empleado> listaEmpleados) {
         this.listaEmpleados = listaEmpleados;
         this.contexto = contexto;
         inflater = LayoutInflater.from(contexto);
+        this.página = 0;
     }
 
     public ArrayList<Empleado> getListaEmpleados() {
@@ -40,6 +42,14 @@ public class ListaEmpleadosAdapter extends RecyclerView.Adapter<EmpleadosViewHol
 
     public void setContexto(Context contexto) {
         this.contexto = contexto;
+    }
+
+    public int getPágina() {
+        return página;
+    }
+
+    public void setPágina(int página) {
+        this.página = página;
     }
 
     //MÉTODOS
@@ -66,6 +76,10 @@ public class ListaEmpleadosAdapter extends RecyclerView.Adapter<EmpleadosViewHol
 
     @Override
     public int getItemCount() {
-        return listaEmpleados.size();
+        if(listaEmpleados != null){
+            return listaEmpleados.size();
+        }else {
+            return 0;
+        }
     }
 }

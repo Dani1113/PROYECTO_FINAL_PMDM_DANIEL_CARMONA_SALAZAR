@@ -22,12 +22,14 @@ public class ListaVideojuegosAdapter extends RecyclerView.Adapter<VideojuegosVie
     private LayoutInflater inflater;
     private ArrayList<Videojuego> listaVideojuegos;
     private Context contexto;
+    private int página;
 
     //CONSTRUCTORES
     public ListaVideojuegosAdapter(Context contexto, ArrayList<Videojuego> listaVideojuegos) {
         this.listaVideojuegos = listaVideojuegos;
         this.contexto = contexto;
         inflater = LayoutInflater.from(contexto);
+        this.página = 0;
     }
 
     //GETTERS & SETTERS
@@ -45,6 +47,14 @@ public class ListaVideojuegosAdapter extends RecyclerView.Adapter<VideojuegosVie
 
     public void setContexto(Context contexto) {
         this.contexto = contexto;
+    }
+
+    public int getPágina() {
+        return página;
+    }
+
+    public void setPágina(int página) {
+        this.página = página;
     }
 
     //MÉTODOS
@@ -68,5 +78,11 @@ public class ListaVideojuegosAdapter extends RecyclerView.Adapter<VideojuegosVie
     }
 
     @Override
-    public int getItemCount() { return listaVideojuegos.size(); }
+    public int getItemCount() {
+        if(listaVideojuegos != null){
+            return listaVideojuegos.size();
+        }else {
+            return 0;
+        }
+    }
 }

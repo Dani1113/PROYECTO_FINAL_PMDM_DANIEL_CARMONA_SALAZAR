@@ -35,7 +35,7 @@ public class MenuActivity extends AppCompatActivity {
     }
 
     public void buscarInformación(View view) {
-        Intent intent = new Intent(this, BuscarInfoActivity2.class);
+        Intent intent = new Intent(this, MostrarInfoActivity.class);
         startActivity(intent);
     }
 }

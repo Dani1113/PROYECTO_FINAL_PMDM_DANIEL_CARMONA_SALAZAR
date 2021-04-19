@@ -14,7 +14,7 @@ import java.util.ArrayList;
 import static com.example.proyecto_final_pmdm_daniel_carmona_salazar.Utilidades.Utilidades.blobABitmap;
 
 public class VideojuegoDB {
-    public static ArrayList<Videojuego> obtenerVideojuego(){
+    public static ArrayList<Videojuego> obtenerVideojuego(int página){
         Connection conexión = BaseDB.conectarConBaseDeDatos();
         if(conexión == null) {
             Log.i("SQL", "Error al establecer la conexión con la base de datos 'videojuego'");
@@ -23,7 +23,8 @@ public class VideojuegoDB {
         ArrayList<Videojuego> videojuegosDevueltos = new ArrayList<Videojuego>();
         try {
             Statement sentencia = conexión.createStatement();
-            String ordenSQL = "SELECT * FROM videojuego";
+            int desplazamiento = página * ConfiguracionesGeneralesDB.ELEMENTOS_POR_PAGINA;
+            String ordenSQL = "SELECT * FROM videojuego LIMIT " + desplazamiento + ", " + ConfiguracionesGeneralesDB.ELEMENTOS_POR_PAGINA;
             ResultSet resultado = sentencia.executeQuery(ordenSQL);
             while(resultado.next()) {
                 int idVideojuego = resultado.getInt("id_videojuego");
@@ -31,7 +32,7 @@ public class VideojuegoDB {
                 int pegiVideojuego = resultado.getInt("pegi_videojuego");
                 String géneroVideojuego = resultado.getString("genero_videojuego");
                 Blob logoVideojuego = resultado.getBlob("logo_videojuego");
-                Videojuego v = new Videojuego(idVideojuego, títuloVideojuego, pegiVideojuego, géneroVideojuego, blobABitmap(logoVideojuego, ConfiguraciónImágenesDB.ANCHO_FOTO, ConfiguraciónImágenesDB.ALTO_FOTO));
+                Videojuego v = new Videojuego(idVideojuego, títuloVideojuego, pegiVideojuego, géneroVideojuego, blobABitmap(logoVideojuego, ConfiguracionesGeneralesDB.ANCHO_FOTO, ConfiguracionesGeneralesDB.ALTO_FOTO));
                 videojuegosDevueltos.add(v);
             }
             resultado.close();
@@ -62,7 +63,7 @@ public class VideojuegoDB {
                 int pegiVideojuego = resultadoSQL.getInt("pegi_videojuego");
                 String géneroVideojuego = resultadoSQL.getString("genero_videojuego");
                 Blob logoVideojuego = resultadoSQL.getBlob("logo_videojuego");
-                Videojuego videojuegoEncontrado = new Videojuego(idVideojuego, títuloVideojuego, pegiVideojuego, géneroVideojuego, blobABitmap(logoVideojuego, ConfiguraciónImágenesDB.ANCHO_FOTO, ConfiguraciónImágenesDB.ALTO_FOTO));
+                Videojuego videojuegoEncontrado = new Videojuego(idVideojuego, títuloVideojuego, pegiVideojuego, géneroVideojuego, blobABitmap(logoVideojuego, ConfiguracionesGeneralesDB.ANCHO_FOTO, ConfiguracionesGeneralesDB.ALTO_FOTO));
                 videojuegosEncontrados.add(videojuegoEncontrado);
             }
             resultadoSQL.close();
@@ -71,6 +72,30 @@ public class VideojuegoDB {
         } catch (SQLException e) {
             Log.i("SQL", "Error al mostrar los videojuegos de la base de datos");
             return null;
+        }
+    }
+
+    public static int obtenerCantidadVideojuegos() {
+        Connection conexión = BaseDB.conectarConBaseDeDatos();
+        if (conexión == null) {
+            Log.i("SQL", "Error al establecer la conexión con la base de datos 'videojuego'");
+            return 0;
+        }
+        int cantidadVideojuegos = 0;
+        try {
+            Statement sentencia = conexión.createStatement();
+            String ordenSQL = "SELECT count(*) as cantidad FROM videojuego";
+            ResultSet resultado  = sentencia.executeQuery(ordenSQL);
+            while (resultado.next()) {
+                cantidadVideojuegos = resultado.getInt("cantidad");
+            }
+            resultado.close();
+            sentencia.close();
+            conexión.close();
+            return cantidadVideojuegos;
+        } catch (SQLException e) {
+            Log.i("SQL", "Error al devolver el número de videojuegos de la base de datos");
+            return 0;
         }
     }
 }

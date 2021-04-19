@@ -54,4 +54,6 @@
     <string name="empleados">EMPLEADOS</string>
     <string name="videojuegos">VIDEOJUEGOS</string>
     <string name="siguiente">SIGUIENTE</string>
+    <string name="listaEmpleados">Lista de empleados</string>
+    <string name="listaVideojuegos">Lista de videojuegos</string>
 </resources>

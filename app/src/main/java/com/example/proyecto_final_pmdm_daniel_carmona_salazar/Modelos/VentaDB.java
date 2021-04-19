@@ -45,7 +45,7 @@ public class VentaDB {
                 int pegiVideojuego = resultado.getInt("pegi_videojuego");
                 String géneroVideojuego = resultado.getString("genero_videojuego");
                 Blob logoVideojuego = resultado.getBlob("logo_videojuego");
-                Videojuego v = new Videojuego(títuloVideojuego, pegiVideojuego, géneroVideojuego, blobABitmap(logoVideojuego, ConfiguraciónImágenesDB.ANCHO_FOTO, ConfiguraciónImágenesDB.ALTO_FOTO));
+                Videojuego v = new Videojuego(títuloVideojuego, pegiVideojuego, géneroVideojuego, blobABitmap(logoVideojuego, ConfiguracionesGeneralesDB.ANCHO_FOTO, ConfiguracionesGeneralesDB.ALTO_FOTO));
 
                 //Recojo la venta
                 int idVenta = resultado.getInt("id_venta");

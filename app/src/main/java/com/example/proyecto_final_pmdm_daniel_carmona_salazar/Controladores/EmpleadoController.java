@@ -2,7 +2,9 @@ package com.example.proyecto_final_pmdm_daniel_carmona_salazar.Controladores;
 
 import com.example.proyecto_final_pmdm_daniel_carmona_salazar.Clases.Empleado;
 import com.example.proyecto_final_pmdm_daniel_carmona_salazar.Tareas.TareasEmpleado.TareaBuscarEmpleado;
+import com.example.proyecto_final_pmdm_daniel_carmona_salazar.Tareas.TareasEmpleado.TareaCantidadEmpleados;
 import com.example.proyecto_final_pmdm_daniel_carmona_salazar.Tareas.TareasEmpleado.TareaObtenerEmpleado;
+import com.example.proyecto_final_pmdm_daniel_carmona_salazar.Tareas.TareasVideojuego.TareaCantidadVideojuegos;
 
 import java.util.ArrayList;
 import java.util.concurrent.ExecutionException;
@@ -12,9 +14,9 @@ import java.util.concurrent.FutureTask;
 import java.util.concurrent.TimeUnit;
 
 public class EmpleadoController {
-    public static ArrayList<Empleado> obtenerEmpleado() {
+    public static ArrayList<Empleado> obtenerEmpleado(int página) {
         ArrayList<Empleado> empleadosDevueltas = null;
-        FutureTask tarea = new FutureTask(new TareaObtenerEmpleado());
+        FutureTask tarea = new FutureTask(new TareaObtenerEmpleado(página));
         ExecutorService es = Executors.newSingleThreadExecutor();
         es.submit(tarea);
         try {
@@ -56,5 +58,28 @@ public class EmpleadoController {
             e.printStackTrace();
         }
         return empleadosEncontrados;
+    }
+
+    public static int obtenerCantidadVideojuegos() {
+        int cantidadEmpleados = 0;
+        FutureTask tarea = new FutureTask (new TareaCantidadEmpleados());
+        ExecutorService es = Executors.newSingleThreadExecutor();
+        es.submit(tarea);
+        try {
+            cantidadEmpleados = (int) tarea.get();
+            es.shutdown();
+            try {
+                if (!es.awaitTermination(800, TimeUnit.MILLISECONDS)) {
+                    es.shutdownNow();
+                }
+            } catch (InterruptedException e) {
+                es.shutdownNow();
+            }
+        } catch (ExecutionException e) {
+            e.printStackTrace();
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
+        return cantidadEmpleados;
     }
 }

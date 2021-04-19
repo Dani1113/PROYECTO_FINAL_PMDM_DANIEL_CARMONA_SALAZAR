@@ -17,7 +17,7 @@
         <activity android:name=".MostrarInfoDetalleEmpleadoActivity" />
         <activity android:name=".MostrarInfoDetalleVentaActivity" />
         <activity android:name=".ActualizarVentaActivity1" />
-        <activity android:name=".BuscarInfoActivity2" />
+        <activity android:name=".MostrarInfoActivity" />
         <activity android:name=".MostrarInfoVentaActivity" />
         <activity android:name=".ActualizarVentaActivity2" />
         <activity android:name=".BorrarVentaActivity" />

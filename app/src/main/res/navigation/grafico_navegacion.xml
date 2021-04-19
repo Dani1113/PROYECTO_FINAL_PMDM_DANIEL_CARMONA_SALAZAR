@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="utf-8"?>
+<navigation xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/grafico_navegacion"
+    app:startDestination="@id/videojuegosFragment">
+
+    <fragment
+        android:id="@+id/videojuegosFragment"
+        android:name="com.example.proyecto_final_pmdm_daniel_carmona_salazar.VideojuegosFragment"
+        android:label="fragment_videojuegos"
+        tools:layout="@layout/fragment_videojuegos" >
+        <action
+            android:id="@+id/action_ir_a_empleados"
+            app:destination="@id/empleadosFragment" />
+        <action
+            android:id="@+id/action_ir_a_videojuegos"
+            app:destination="@id/videojuegosFragment" />
+    </fragment>
+    <fragment
+        android:id="@+id/empleadosFragment"
+        android:name="com.example.proyecto_final_pmdm_daniel_carmona_salazar.EmpleadosFragment"
+        android:label="fragment_empleados"
+        tools:layout="@layout/fragment_empleados" >
+        <action
+            android:id="@+id/action_ir_a_videojuegos"
+            app:destination="@id/videojuegosFragment" />
+        <action
+            android:id="@+id/action_empleadosFragment_self"
+            app:destination="@id/empleadosFragment" />
+    </fragment>
+</navigation>

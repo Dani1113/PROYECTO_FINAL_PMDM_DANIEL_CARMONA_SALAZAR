@@ -3,22 +3,18 @@ package com.example.proyecto_final_pmdm_daniel_carmona_salazar;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.content.Intent;
-import android.graphics.Bitmap;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.TextView;
 import android.widget.Toast;
 
 import com.example.proyecto_final_pmdm_daniel_carmona_salazar.Clases.Empleado;
-import com.example.proyecto_final_pmdm_daniel_carmona_salazar.Clases.Venta;
 import com.example.proyecto_final_pmdm_daniel_carmona_salazar.Clases.Videojuego;
 import com.example.proyecto_final_pmdm_daniel_carmona_salazar.Controladores.EmpleadoController;
 import com.example.proyecto_final_pmdm_daniel_carmona_salazar.Controladores.VideojuegoController;
 
-import java.io.ByteArrayOutputStream;
 import java.util.ArrayList;
 
-import static com.example.proyecto_final_pmdm_daniel_carmona_salazar.ActualizarVentaActivity1.EXTRA_IMAGEN_VIDEOJUEGO;
 import static com.example.proyecto_final_pmdm_daniel_carmona_salazar.ActualizarVentaActivity1.EXTRA_OBJETO_EMPLEADO;
 import static com.example.proyecto_final_pmdm_daniel_carmona_salazar.ActualizarVentaActivity1.EXTRA_OBJETO_VIDEOJUEGO_SIN_IMAGEN;
 
@@ -38,7 +34,7 @@ public class BuscarInfoActivity extends AppCompatActivity {
     }
 
     public void buscarInformaciónSiguiente(View view) {
-        Intent intent = new Intent(this, BuscarInfoActivity2.class);
+        Intent intent = new Intent(this, MostrarInfoActivity.class);
 
         //Empleado
         String nombre = String.valueOf(edtBuscarNombreE.getText());
