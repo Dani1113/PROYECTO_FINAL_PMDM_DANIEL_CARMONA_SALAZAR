@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <item
+        android:id="@+id/itemMostrarVideojuegos"
+        android:orderInCategory="10"
+        android:icon="@drawable/videojuego"
+        android:title="@string/mostrar_videojuegos"
+        app:showAsAction="ifRoom" />
+    <item
+        android:id="@+id/itemMostrarEmpleados"
+        android:icon="@drawable/empleado"
+        android:orderInCategory="20"
+        android:title="@string/mostrar_empleados"
+        app:showAsAction="always" />
+
+    <item android:title="@string/ir_a_inicio"
+          android:id="@+id/itemIrAInicio"
+          android:orderInCategory="30"
+          app:showAsAction="never"/>
+</menu>

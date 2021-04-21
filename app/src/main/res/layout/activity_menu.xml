@@ -51,11 +51,11 @@
         app:layout_constraintTop_toBottomOf="@+id/btBorrarVenta" />
 
     <Button
-        android:id="@+id/btMostrarInformacion"
+        android:id="@+id/btMostrarVentas"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="34dp"
-        android:onClick="mostrarInformación"
+        android:onClick="mostrarVentas"
         android:text="@string/mostrar_ventas"
         android:textColor="@color/colorLetraBotones"
         android:textSize="19sp"
@@ -77,16 +77,16 @@
         app:layout_constraintTop_toTopOf="parent" />
 
     <Button
-        android:id="@+id/btBuscarInformación"
+        android:id="@+id/btMostrarInformación"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginTop="34dp"
-        android:onClick="buscarInformación"
+        android:layout_marginTop="27dp"
+        android:onClick="mostrarInformación"
         android:text="@string/mostrar_informacion"
         android:textColor="@color/colorLetraBotones"
         android:textSize="19sp"
         app:backgroundTint="@color/fondoBotones"
-        app:layout_constraintEnd_toEndOf="@+id/btMostrarInformacion"
-        app:layout_constraintStart_toStartOf="@+id/btMostrarInformacion"
-        app:layout_constraintTop_toBottomOf="@+id/btMostrarInformacion" />
+        app:layout_constraintEnd_toEndOf="@+id/btMostrarVentas"
+        app:layout_constraintStart_toStartOf="@+id/btMostrarVentas"
+        app:layout_constraintTop_toBottomOf="@+id/btMostrarVentas" />
 </androidx.constraintlayout.widget.ConstraintLayout>

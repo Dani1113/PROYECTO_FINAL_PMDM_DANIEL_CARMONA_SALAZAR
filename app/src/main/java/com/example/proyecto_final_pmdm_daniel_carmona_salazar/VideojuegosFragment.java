@@ -32,7 +32,7 @@ public class VideojuegosFragment extends Fragment {
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
-        View vista = inflater.inflate(R.layout.fragment_menu, container, false);
+        View vista = inflater.inflate(R.layout.fragment_videojuegos, container, false);
 
         totalRegistros = VideojuegoController.obtenerCantidadVideojuegos();
         totalPáginas = (totalRegistros / ConfiguracionesGeneralesDB.ELEMENTOS_POR_PAGINA) + 1;

@@ -1,3 +1,5 @@
+use tienda_videojuegos_android;
+
 SELECT * FROM tienda_videojuegos_android.empleado;
 SELECT * FROM tienda_videojuegos_android.venta;
 SELECT * FROM tienda_videojuegos_android.videojuego;

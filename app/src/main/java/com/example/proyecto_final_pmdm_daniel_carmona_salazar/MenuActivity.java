@@ -29,12 +29,12 @@ public class MenuActivity extends AppCompatActivity {
         startActivity(intent);
     }
 
-    public void mostrarInformación(View view) {
+    public void mostrarVentas(View view) {
         Intent intent = new Intent(this, MostrarInfoVentaActivity.class);
         startActivity(intent);
     }
 
-    public void buscarInformación(View view) {
+    public void mostrarInformación(View view) {
         Intent intent = new Intent(this, MostrarInfoActivity.class);
         startActivity(intent);
     }
