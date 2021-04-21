@@ -26,7 +26,7 @@
             android:id="@+id/action_ir_a_videojuegos"
             app:destination="@id/videojuegosFragment" />
         <action
-            android:id="@+id/action_empleadosFragment_self"
+            android:id="@+id/action_ir_a_empleados"
             app:destination="@id/empleadosFragment" />
     </fragment>
 </navigation>

@@ -118,6 +118,8 @@ public class VideojuegosFragment extends Fragment {
             });
             helperVideojuegos.attachToRecyclerView(rvVideojuegos);
              */
+        }else {
+            Log.i("SQL", "Videojuegos = null");
         }
         return vista;
     }

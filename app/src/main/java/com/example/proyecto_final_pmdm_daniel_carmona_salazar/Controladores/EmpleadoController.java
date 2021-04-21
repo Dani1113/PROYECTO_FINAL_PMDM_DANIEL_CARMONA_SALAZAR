@@ -60,7 +60,7 @@ public class EmpleadoController {
         return empleadosEncontrados;
     }
 
-    public static int obtenerCantidadVideojuegos() {
+    public static int obtenerCantidadEmpleados() {
         int cantidadEmpleados = 0;
         FutureTask tarea = new FutureTask (new TareaCantidadEmpleados());
         ExecutorService es = Executors.newSingleThreadExecutor();

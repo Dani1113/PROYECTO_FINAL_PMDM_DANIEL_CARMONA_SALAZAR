@@ -21,7 +21,7 @@ public class EmpleadoDB {
         try {
             Statement sentencia = conexión.createStatement();
             int desplazamiento = página * ConfiguracionesGeneralesDB.ELEMENTOS_POR_PAGINA;
-            String ordenSQL = "SELECT * FROM empleado LIMIT" + desplazamiento + ", " + ConfiguracionesGeneralesDB.ELEMENTOS_POR_PAGINA;
+            String ordenSQL = "SELECT * FROM empleado LIMIT " + desplazamiento + ", " + ConfiguracionesGeneralesDB.ELEMENTOS_POR_PAGINA;
             ResultSet resultado = sentencia.executeQuery(ordenSQL);
             while(resultado.next()) {
                 int idEmpleado = resultado.getInt("id_empleado");

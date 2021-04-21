@@ -9,3 +9,7 @@ FROM venta ve
 INNER JOIN empleado e 
 INNER JOIN videojuego vi 
 ON (e.id_empleado = ve.EMPLEADO_id_empleado AND vi.id_videojuego = ve.VIDEOJUEGO_id_videojuego);
+
+# INSERT INTO empleado (nombre_empleado, apellidos_empleado, domicilio_empleado, telefono_empleado) VALUES ("Jose Luis", "Jiménez González", "C/PC, Nº7", "984631152");
+# INSERT INTO videojuego (título_videojuego, pegi_videojuego, genero_videojuego, logo_videojuego) VALUES ("FF7", 12, "RPG", 0);
+# INSERT INTO venta (numero_venta, EMPLEADO_id_empleado, VIDEOJUEGO_id_videojuego) VALUES (80, , );
